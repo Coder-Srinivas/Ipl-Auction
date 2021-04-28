@@ -1,0 +1,91 @@
+.nav-container{
+    @include glassmorphism;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 2rem;
+
+    &-logo {
+        height: 1.5rem;
+        margin-right: auto;
+    }
+
+    &-main {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all .3s ease-in-out;
+
+        &-content {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: $font-color-main;
+            text-transform: uppercase;
+            margin: 0 2rem;
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+        }
+
+        &-content::before {
+            position: absolute;
+            content: "";
+            display: block;
+            height: .1rem;
+            background-color: $hover-color;
+            top: -.5px;
+            left: 0;
+            right: 0;
+            transform: scale(0, 1);
+            transition: transform ease-in-out 250ms;
+        }
+
+        &-content:hover::before {
+            transform: scale(1, 1);
+        }
+    }
+}
+
+.bar-container {
+    position: absolute;
+    top: .8rem;
+    left: 87%;
+}
+
+@media (max-width: $max-width) {
+    .nav-container {
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+
+        &-main{
+            flex-direction: column;
+            margin-top: 1rem;
+            width: 100%;
+
+            &-content {
+                box-shadow: none;
+                padding: .5rem 0;
+                text-align: center;
+                margin: 0 0;
+            }
+        }
+    }
+
+    .activate {
+        transform-origin: top;
+        transition: all .3s ease-in-out;
+        transform: scale(1, 1);
+    }
+    
+    .deactivate {
+        transform: scale(1, 0);
+        transform-origin: top;
+        position: absolute;
+    }
+}

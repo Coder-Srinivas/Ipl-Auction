@@ -1,0 +1,83 @@
+
+.login {
+    @include glassmorphism;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+
+    &-container {
+        @include glassmorphism;
+        border-top: 1px solid rgba(255, 255, 255, .5);
+        border-right: none;
+        min-width: 28rem;
+        min-height: 32rem;
+        height: auto;
+        padding: 2rem 3rem;
+        border-radius: 20px;
+
+        &-user-icon {
+            position: absolute;
+            top: 4.5rem;
+            left: 1rem;
+            transform: scale(.8);
+            z-index: 999;
+        }
+
+        h3{
+            text-align: center;
+        }
+
+        &-desc {
+            font-size: 1rem;
+            padding-left: 1rem;
+            margin: .5rem 0;
+        }
+
+        &-desc--2 {
+            font-size: .95rem;
+            margin-bottom: .5rem;
+        }
+
+        &-input {
+            @include glassmorphism;
+            padding: .2rem 0;
+            width: 100%;
+            min-height: 3rem;
+            text-decoration: none;
+            border-radius: 35px;
+            border: none;
+            outline: none;
+            padding-left: 3rem;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            color: $font-color-main;
+
+            &:focus{
+                border: 2px solid whitesmoke;
+            }
+            &-container{
+                padding: 1.5rem 0;
+                position: relative;
+            }
+        }
+
+        &-reg-forget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 1rem;
+
+            a {
+                text-decoration: none;
+                color: $theme-color;
+            }
+        }
+    }
+}
+
+.success {
+    background-color: greenyellow;
+}

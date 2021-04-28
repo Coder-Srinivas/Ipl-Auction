@@ -1,0 +1,20 @@
+{
+  "name": "ipl-auction",
+  "version": "1.0.0",
+  "description": "A Website designed to mimic an IPL auction",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "cd Backend && npm run dev",
+    "dev-client": "cd client && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coder-Srinivas/Ipl-Auction.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coder-Srinivas/Ipl-Auction/issues"
+  },
+  "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme"
+}

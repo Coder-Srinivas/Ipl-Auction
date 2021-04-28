@@ -1,0 +1,17 @@
+//Utilities
+@import './utilities/variables.scss';
+@import './utilities/mixins.scss';
+
+//Base
+@import './base/reset.scss';
+@import './base/animations.scss';
+
+//Abstracts
+
+//Components
+@import './components/navbar.scss';
+@import './components/bars.scss';
+
+//Pages
+@import './pages/home.scss';
+@import './pages/login.scss';

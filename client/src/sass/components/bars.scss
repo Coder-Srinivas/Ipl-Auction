@@ -1,0 +1,36 @@
+.bars{
+    min-width: 1rem;
+    min-height: 1rem;
+    display: none;
+    cursor: pointer;
+    &-main {
+        position: relative;
+        width: 2rem;
+        height: .2rem;
+        border-radius: 5px;
+        background-color: $font-color-main;
+        box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+        transition: all .4s ease-in-out;
+        margin: .28rem 0;
+
+        &-center {
+            transform: translate(-50px);
+            background: none;
+            box-shadow: none;
+        }
+
+        &-top {
+            transform: rotate(45deg) translate(0, .75rem);
+        }
+
+        &-bottom {
+            transform: rotate(-45deg) translate(-.1rem, -.7rem);
+        }
+    }
+}
+
+@media (max-width: $max-width) {
+    .bars {
+        display: block;
+    }
+}

@@ -1,0 +1,28 @@
+.home{
+    @include glassmorphism;
+    min-height: 100vh;
+
+    &-title {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2.5rem;
+        display: flex;
+        padding: 0 2rem;
+        letter-spacing: .3rem;
+        display: flex-start;
+    
+        &--1{
+            animation: dashFromLeft 2s ease-in-out 0s;
+        }
+        &--2{
+            animation: dashFromRight 2s ease-in-out 0s;
+        }
+        &--4{
+            animation: dashFromLeft 2s ease-in-out 0s;
+        }
+        &--5{
+            animation: dashFromRight 2s ease-in-out 0s;
+        }
+    }
+    
+}
