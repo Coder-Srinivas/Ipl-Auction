@@ -1,32 +1,49 @@
 const axios = require('axios');
 const url = process.env.BACKEND_URL || "http://localhost:8000/";
+const axiosInstance = axios.create({
+    withCredentials: true,
+    baseURL: url
+})
 
-const login = (email, password) => {
-    console.log(email, password);
-    axios.post(url + 'login', {
+const login = async (email, password) => {
+    return await axiosInstance.post(url + 'login', {
         email,
         password
     }).then((response) => {
-        if(response.data.success){
-            
-        }
         return response.data;
     }).catch((error) => {
-        return error.message;
+        return {
+            success: false,
+            message: "Sorry, the credentials you entered, do not match."
+        };
     });
 }
 
-const register = (username, email, password) => {
-    console.log(email, password);
-    axios.post(url + 'signup', {
+const register = async (username, email, password) => {
+    return await axiosInstance.post(url + 'signup', {
         email,
         password,
-        username
+        username,
     }).then((response) => {
-        return ;
+        return response.data;
     }).catch((error) => {
-        console.log(error.message);
+        return {
+            success: false,
+            message: "Opps, something went wrong. Try again."
+        };
     });
 }
 
-module.exports = {login, register}
+const authorization = async () => {
+    return await axiosInstance.get(url + 'authenticate', {}).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        return {
+            success: false,
+            message: "Not authorized"
+        }
+
+    })
+}
+
+module.exports = {login, register, authorization}

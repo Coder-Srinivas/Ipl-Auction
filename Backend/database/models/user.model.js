@@ -8,7 +8,8 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        dropDups: true
     },
 
     password: {
@@ -18,7 +19,8 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        dropDups: true
     },
     tokens: [{
         token: {

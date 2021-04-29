@@ -11,7 +11,7 @@
         @include glassmorphism;
         border-top: 1px solid rgba(255, 255, 255, .5);
         border-right: none;
-        min-width: 28rem;
+        min-width: 28.5rem;
         min-height: 32rem;
         height: auto;
         padding: 2rem 3rem;
@@ -19,7 +19,7 @@
 
         &-user-icon {
             position: absolute;
-            top: 4.5rem;
+            top: 4.9rem;
             left: 1rem;
             transform: scale(.8);
             z-index: 999;
@@ -30,8 +30,9 @@
         }
 
         &-desc {
+            display: inline-block;
             font-size: 1rem;
-            padding-left: 1rem;
+            padding: .2rem 1rem;
             margin: .5rem 0;
         }
 
@@ -78,6 +79,25 @@
     }
 }
 
-.success {
-    background-color: greenyellow;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+    -webkit-box-shadow: 0 0 0 30px $background-color-main inset !important;
+}
+
+.error {
+    text-align: center;
+    display: block;
+    background-color: rgba(255, 0, 0, 0.1);
+    font-size: 1rem;
+    margin-top: .8rem;
+    padding: .5rem;
+    border-radius: 1rem;
+    max-width: 22rem;
+}
+
+.invisible {
+    display: none;
 }

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Coder-Srinivas/Ipl-Auction/issues"
   },
-  "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme"
+  "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme",
+  "dependencies": {
+    "validator": "^13.6.0"
+  }
 }
