@@ -1,0 +1,36 @@
+.about{
+    @include glassmorphism;
+    min-height: 100vh;
+    &-head{
+        text-align: center;
+    }
+    &-content{
+        display: flex;
+        min-height: 70vh;
+        width: auto;
+        margin-top: 10%;
+        &-img{
+            width: 50vw;
+        }
+    
+        &-txt{
+            display: flex;
+            flex-direction: column;
+            margin: 5% 0% 0% 10%;
+          
+            &-1{
+                text-align: center;
+            }
+            &-2{
+                margin-top: 5%;
+                color: $hover-color;
+            }
+            &-3{
+                margin-top: 5%;
+                text-align: center;
+            }
+        }
+    }
+
+   
+}

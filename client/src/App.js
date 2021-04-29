@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Auction from './pages/Auction';
+import About from './pages/About';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" render={(props) => <Home/>}/>
           <Route exact path="/login" render={(props) => <Login/>}/>
           <Route exact path="/signup" render={(props) => <Register/>}/>
+          <Route exact path="/about" render={(props) => <About/>}/>
           <Route exact path="/auction" render={(props) => <Auction {...props}/>}/>
         </Switch>
     </div>
