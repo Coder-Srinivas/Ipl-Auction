@@ -6,17 +6,25 @@
   }
   &-content {
     display: flex;
-    width: auto;
-    margin-top: 10%;
+    margin: 10% 15% auto 15%;
+    background-color: #171717;
+    @include glassmorphism;
+    border-top: 1px solid rgba(255, 255, 255, .5);
+    border-right: none;
+    padding: 2rem 3rem;
+    border-radius: 20px;
     &-img {
-      width: 50vw;
+      height: 250px;
+      width: 270px;
+      border-radius: 50%;
+      margin-left: 60px;
     }
     &-txt {
       display: flex;
       flex-direction: column;
       margin: 5% 0% 0% 10%;
+
       &-1 {
-        text-align: center;
         cursor: default;
         &:hover{
             transform: skewX(-15deg);
@@ -28,21 +36,22 @@
       }
       &-3 {
         margin-top: 5%;
-        text-align: center;
       }
     }
 
     &-social {
       display: flex;
       margin-top: 10%;
-      justify-content: center;
       &-icon {
         cursor: pointer;
         -webkit-animation: pulse 0.8s ease-in-out infinite alternate;
         animation: pulse 0.8s ease-in-out infinite alternate;
       }
+      &-1{
+        margin-left: 0.5%;
+      }
       &-2 {
-        margin-left: 7%;
+        margin-left: 10%;
       }
     }
   }
@@ -68,6 +77,9 @@
       margin-top: 10%;
       align-items: center;
       &-img {
+        margin-left: 0px;
+        height: 100px;
+        width: 100px;
         margin-top: 5%;
       }
       &-txt {
@@ -76,7 +88,15 @@
         width: 100%;
       }
       &-social{
-          margin: 5% 0% 5% 0%;
+         text-align: center;
+         margin: 10% 0 0 35%;
+         padding: 2%;
+         &-1{
+           margin-right: 10%;
+         }
+         &-2{
+          //  margin-left: 10%;
+         }
       }
     }
   }
