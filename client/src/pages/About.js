@@ -9,7 +9,7 @@ const About = () => {
         
         <img className="about-content-img" alt="about-svg" src="Images/about.jpg"></img>
         <div className="about-content-txt">
-          <h2 className="about-content-txt-1">M. Srinivas</h2>
+          <h2 className="about-content-txt-1">M. Srinivas(the ultimate dog)</h2>
           <h4 className="about-content-txt-2">
             Competitive Coder | Full Stack Developer
           </h4>
