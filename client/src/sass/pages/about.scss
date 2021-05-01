@@ -1,36 +1,116 @@
-.about{
-    @include glassmorphism;
-    min-height: 100vh;
-    &-head{
-        text-align: center;
+.about {
+  @include glassmorphism;
+  min-height: 100vh;
+  &-head {
+    text-align: center;
+  }
+  &-content {
+    display: flex;
+    width: auto;
+    margin-top: 10%;
+    &-img {
+      width: 50vw;
     }
-    &-content{
-        display: flex;
-        min-height: 70vh;
-        width: auto;
-        margin-top: 10%;
-        &-img{
-            width: 50vw;
+    &-txt {
+      display: flex;
+      flex-direction: column;
+      margin: 5% 0% 0% 10%;
+      &-1 {
+        text-align: center;
+        cursor: default;
+        &:hover{
+            transform: skewX(-15deg);
         }
-    
-        &-txt{
-            display: flex;
-            flex-direction: column;
-            margin: 5% 0% 0% 10%;
-          
-            &-1{
-                text-align: center;
-            }
-            &-2{
-                margin-top: 5%;
-                color: $hover-color;
-            }
-            &-3{
-                margin-top: 5%;
-                text-align: center;
-            }
-        }
+      }
+      &-2 {
+        margin-top: 5%;
+        color: $hover-color;
+      }
+      &-3 {
+        margin-top: 5%;
+        text-align: center;
+      }
     }
 
-   
+    &-social {
+      display: flex;
+      margin-top: 10%;
+      justify-content: center;
+      &-icon {
+        cursor: pointer;
+        -webkit-animation: pulse 0.8s ease-in-out infinite alternate;
+        animation: pulse 0.8s ease-in-out infinite alternate;
+      }
+      &-2 {
+        margin-left: 7%;
+      }
+    }
+  }
+
+  &-proj {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10%;
+    &-head {
+      color: $hover-color;
+    }
+    &-para {
+      margin: 5%;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .about {
+    &-content {
+      flex-direction: column;
+      margin-top: 10%;
+      align-items: center;
+      
+      &-img {
+        width: 50vw;
+        margin-top: 5%;
+      }
+      &-txt {
+        margin: 15% 0% 15% 0%;
+        text-align: center;
+        width: 100%;
+
+      }
+      &-social{
+          margin: 5% 0% 5% 0%;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    color: $hover-color;
+    transform: scale(1.5);
+  }
+  50% {
+    color: whitesmoke;
+    transform: scale(1.7);
+  }
+  100% {
+    color: $hover-color;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: $hover-color;
+    transform: scale(1.5);
+  }
+  50% {
+    color: whitesmoke;
+    transform: scale(1.7);
+  }
+  100% {
+    color: $hover-color;
+    transform: scale(1.5);
+  }
 }
