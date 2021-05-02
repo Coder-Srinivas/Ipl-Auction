@@ -1,36 +1,31 @@
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from  '@fortawesome/free-solid-svg-icons';
-import { login } from '../services/auth.service';
+import { faUser } from  '@fortawesome/free-solid-svg-icons';
+import { register } from '../services/auth.service';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Form from '../components/Form';
+const { handleChange, handleEmailChange, handlePasswordChange } = require('../utilities/handleChanges');
 
-const { handleEmailChange, handlePasswordChange } = require('../utilities/handleChanges');
-const Login = () => {
+const SignUp = () => {
 
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({
         email: '',
         password: '',
         form: ''
     })
-    
-    const message = () => {
-        return(
-            <div className='form-container-additional'>
-                <div className='form-container-desc--2'>
-                    New User? <Link to='/signup'> Click here</Link>
-                </div>
-
-                <div className='form-container-desc--2'>
-                    <Link to='/reset/forgot'>Forgot Password?</Link>
-                </div>
-            </div>
-        )
-    }
 
     const data = [
+        {
+            type: "username",
+            title: "Username",
+            placeholder: "Enter your username", 
+            onChange: (value) => {handleChange(value, setUsername)}, 
+            icon: faUser,
+            error: errors.email
+        },
         {
             type: "email",
             title: "Email",
@@ -54,31 +49,31 @@ const Login = () => {
         if(errors.email !== '' || errors.password !== ''){
             return;
         }
-        const data = await login(email, password);
-
+        const data = await register(username, email, password);
+    
         if(!data.success){
             return setErrors(prev => ({
                 ...prev,
                 form: data.message
             }));
         }
-
+    
         setErrors(prev => ({
             ...prev,
             form: ''
         }))
-
+    
         console.log(data);
     }
+    
     return(
         <Form
-            title = "Login"
+            title = "Sign Up"
             data = {data}
             onFormSubmit = {handleSubmit}
-            message = {message}
             error = {errors.form}
         />
     )
 }
 
-export default Login
+export default SignUp

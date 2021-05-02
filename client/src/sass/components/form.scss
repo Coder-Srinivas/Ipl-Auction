@@ -1,5 +1,5 @@
 
-.login {
+.form {
     @include glassmorphism;
     min-height: 100vh;
     display: flex;
@@ -17,7 +17,7 @@
         padding: 2rem 3rem;
         border-radius: 20px;
 
-        &-user-icon {
+        &-icon {
             position: absolute;
             top: 4.9rem;
             left: 1rem;
@@ -64,7 +64,7 @@
             }
         }
 
-        &-reg-forget {
+        &-additional {
             display: flex;
             justify-content: center;
             align-items: center;

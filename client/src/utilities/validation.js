@@ -8,4 +8,4 @@ const validateEmail = (email) => {
     return validator.isEmail(email);
 }
 
-module.exports = {validateEmail, validatePassword}
+module.exports = { validateEmail, validatePassword }
