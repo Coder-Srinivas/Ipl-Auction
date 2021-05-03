@@ -1,0 +1,54 @@
+.btn{
+    height: 25%;
+    background-color: transparent;
+    position: relative;
+    width: 30px;
+  }
+    
+  .btn-link {
+    color: inherit;
+    text-decoration: none;
+    border: 3px solid inherit;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    border-radius: 35px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    transition: all 1s;
+  }
+    
+  .btn-link:before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 130px;
+    background-image: linear-gradient(to right, #d9007062,#4480da81 );
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%);
+    animation: wave 5s infinite linear;
+    transition: all 1s;
+  }
+    
+  .btn-link:before {
+    :hover:before {
+    top: 15px;
+  }
+}
+
+  @keyframes wave {
+    0% {
+              transform: translate(-50%) rotate(-180deg);
+        
+    }
+      50%{
+        transform: translate(-50%) rotate(270deg);
+      }
+      
+    100% {
+              transform: translate(-50%) rotate(360deg);
+    }
+  }

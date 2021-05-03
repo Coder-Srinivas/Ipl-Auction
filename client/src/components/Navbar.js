@@ -1,6 +1,7 @@
 import Bars from './Bars';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Btn from './Button';
 
 const Navbar = () => {
 
@@ -19,9 +20,9 @@ const Navbar = () => {
                 <Bars barState={barState} setBarState={setBarState}/>
             </div>
 
-            <div className="nav-container-login">
-                <Link to="/login">Login</Link>
-            </div>
+          
+                <Btn href="/login" txt="login"/>
+            
             
 
         </header>
