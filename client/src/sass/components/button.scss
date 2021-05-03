@@ -1,54 +1,51 @@
 .btn{
-    height: 25%;
+    height: 20%;
     background-color: transparent;
     position: relative;
     width: 30px;
   }
     
   .btn-link {
-    color: inherit;
+    color: #4581D9;
     text-decoration: none;
-    border: 3px solid inherit;
+    // background-color: #4581D9;
+    border: 3px solid #4581D9;
     text-transform: uppercase;
+    font-weight: bolder;
     padding: 5px 30px;
     border-radius: 35px;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    transition: all 1s;
+    transition: all .4s ease-in-out;
   }
     
-  .btn-link:before {
+  .btn-link:after {
     content: "";
     position: absolute;
     width: 320px;
     height: 320px;
     border-radius: 130px;
-    background-image: linear-gradient(to right, #d9007062,#4480da81 );
-    top: 15px;
+    background-image: linear-gradient(to right, #c7068785, #c7068785);
+    top: 500px;
     left: 50%;
     transform: translate(-50%);
     animation: wave 5s infinite linear;
-    transition: all 1s;
+    transition: all .2s ease-in-out;
   }
     
-  .btn-link:before {
-    :hover:before {
-    top: 15px;
+  .btn-link:after{
+    :hover:after {
+    top: 500px;
   }
 }
 
-  @keyframes wave {
-    0% {
-              transform: translate(-50%) rotate(-180deg);
-        
-    }
-      50%{
-        transform: translate(-50%) rotate(270deg);
-      }
-      
-    100% {
-              transform: translate(-50%) rotate(360deg);
-    }
-  }
+.btn-link:hover:after{
+top:2px;
+}
+
+.btn-link:hover{
+    color: #fff;
+    border: 3px solid #fff;
+}

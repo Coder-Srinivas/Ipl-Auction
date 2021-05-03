@@ -31,3 +31,17 @@
         transform: translateX(0);
     }
 }
+
+@keyframes wave {
+    0% {
+    transform: translate(-50%) rotate(-180deg);
+        
+    }
+    50%{
+        top: 20px;
+    }
+      
+    100% {
+        transform: translate(-50%) rotate(360deg);
+    }
+  }
