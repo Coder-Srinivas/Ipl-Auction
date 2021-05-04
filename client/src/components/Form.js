@@ -18,10 +18,12 @@ const Form = ({ title, data, onFormSubmit, message = () => {}, error }) => {
             <div className="form-container">
                 <h3 className="form-container-title">{title}</h3>
                 <form id="form" onSubmit={onFormSubmit} noValidate>
-                    {data.map((inputFields) => {
-                        return <Input {...inputFields} />
+                    {data.map((inputFields, index) => {
+                        return <Input key={index} {...inputFields} />
                     })}
-                    <input type='submit' value={title}/>
+                    <div className="btn">
+                        <input type='submit' value={title} className="btn-link"/>
+                    </div>
                 </form>
                 <p className={error === '' ? 'invisible' : 'error'}>{error}</p>
                 <div className="form-container-additional">

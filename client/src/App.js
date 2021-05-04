@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 
+// Pages
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -7,18 +8,31 @@ import SignUp from './pages/SignUp';
 import Auction from './pages/Auction';
 import About from './pages/About';
 
+// Custom Hooks
+import { UserContext } from './hooks/UserContext';
+import useFindUser from './hooks/useFindUser';
+
+// Custom Routes
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+
 function App() {
+
+  const [user, setUser, loading] = useFindUser();
+
   return (
-    <div className="App">
-        <Navbar/>
-        <Switch>
-          <Route exact path="/" render={(props) => <Home/>}/>
-          <Route exact path="/login" render={(props) => <Login/>}/>
-          <Route exact path="/signup" render={(props) => <SignUp/>}/>
-          <Route exact path="/about" render={(props) => <About/>}/>
-          <Route exact path="/auction" render={(props) => <Auction {...props}/>}/>
-        </Switch>
-    </div>
+    <UserContext.Provider value = {{ user, setUser, loading }}>
+      <div className="App">
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" render={(props) => <Home {...props}/>}/>
+            <PublicRoute exact path="/login" component={Login}/>
+            <PublicRoute exact path="/signup" component={SignUp}/>
+            <Route exact path="/about" render={(props) => <About {...props}/>}/>
+            <PrivateRoute exact path="/auction" component={Auction}/>
+          </Switch>
+      </div>
+    </UserContext.Provider>
   );
 }
 

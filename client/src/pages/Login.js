@@ -1,13 +1,16 @@
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from  '@fortawesome/free-solid-svg-icons';
 import { login } from '../services/auth.service';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../components/Form';
+import { UserContext } from '../hooks/UserContext';
 
 const { handleEmailChange, handlePasswordChange } = require('../utilities/handleChanges');
-const Login = () => {
 
+const Login = (props) => {
+
+    const { setUser } = useContext(UserContext); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({
@@ -68,7 +71,8 @@ const Login = () => {
             form: ''
         }))
 
-        console.log(data);
+        setUser(data.user);
+        props.history.push('/auction')
     }
     return(
         <Form

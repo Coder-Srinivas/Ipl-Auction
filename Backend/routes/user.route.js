@@ -24,6 +24,8 @@ router.post("/signup", async (req, res) => {
     }catch(error){
         const message = error.message;
         let errorMessage = '';
+
+        // Checking for duplicates
         if(message.includes("username")){
             errorMessage = "Opps, the username you have enter already exists, try a different one";
         }else if(message.includes("email")){
@@ -31,7 +33,8 @@ router.post("/signup", async (req, res) => {
         }else{
             errorMessage = "Opps, something went wrong, try again.";
         }
-        res.send({
+
+        res.status(400).send({
             success: false,
             message: errorMessage
         });
@@ -56,8 +59,9 @@ router.post("/login", async (req, res) => {
             message: "Successfully logged in.",
             user: user.getPublicProfile()
         })
+
     }catch(error){
-        res.send({
+        res.status(401).send({
             success: false,
             message: error.message
         });
@@ -65,10 +69,28 @@ router.post("/login", async (req, res) => {
 })
 
 // Authenticating the http only cookie
-router.get("/authenticate", auth, (req, res) => {
-    res.send({
+router.get("/user", auth, async (req, res) => {
+
+    const id = req.id;
+    const user = await User.findById(id);
+    if(user){
+        res.send({
+            success: true,
+            message: "Successfully Authenticated",
+            user: user.getPublicProfile()
+        })
+    }else{
+        res.status(401).send({
+            success: false,
+            message: "Not authenticated"
+        })
+    }
+})
+
+router.get("/logout", auth, async (req, res) => {
+    res.clearCookie('jwt').send({
         success: true,
-        message: "Successfully Authenticated"
+        message: "Successfully logged out"
     })
 })
 

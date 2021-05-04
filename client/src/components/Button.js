@@ -1,11 +1,9 @@
-
-const Button =({href, txt}) =>{
+const Button =({txt, handleClick = () => {}}) =>{
     return (
-        <div className="btn">
-            <a href={href} className="btn-link">
-             {txt}
-            </a>
-            
+        <div className="btn" onClick={() => (handleClick())}>
+            <p className="btn-link">
+                {txt}
+            </p>
         </div>
     )
 }
