@@ -4,6 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const userRouter = require('./routes/user.route');
+const newsRouter = require('./routes/news.route');
 const User = require('./database/models/user.model');
 require('dotenv').config()
 require('./database/connection');
@@ -23,6 +24,7 @@ app.use(express.json());
 
 //Routes
 app.use(userRouter);
+app.use(newsRouter);
 
 
 app.listen(8000, () => {

@@ -1,3 +1,29 @@
-.btn{
-  width: 100%;
+.button{
+  position: absolute;
+  padding: .4rem 1.2rem;
+  border-radius: 30px;
+  transition: transform .8s;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  z-index: 1;
+
+  &::before{
+    z-index: -1;
+    content: '';
+    height: 200%;
+    width: 200%;
+    position: absolute;
+    top: 100%;
+    left: -50%;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background-color: red;
+    transition: transform .8s;
+  }
+
+  &:hover::before{
+    transform: translateY(-2.7rem);
+  }
 }

@@ -1,3 +1,5 @@
+import News from '../components/News';
+
 const Home = () => {
 
     return(
@@ -14,6 +16,8 @@ const Home = () => {
             <div className="home-title home-title--5">
                 <h1>Auction</h1>
             </div>
+
+            <News />
         </div>
     )
 }

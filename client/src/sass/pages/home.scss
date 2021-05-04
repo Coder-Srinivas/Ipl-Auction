@@ -1,6 +1,5 @@
 .home{
     @include glassmorphism;
-    min-height: 100vh;
 
     &-title {
         text-transform: uppercase;
