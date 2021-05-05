@@ -1,13 +1,12 @@
-const NewsCard = ({ title, image, description, weekDate, date}) => {
+import NewsImage from './NewsImage';
+import NewsContent from './NewsContent';
 
-    console.log(title, image, description, weekDate, date)
+const NewsCard = ({ image, ...remaining}) => {
+
     return (
-    <div>
-        {title}
-        <img src={image}></img>
-        {description}
-        {weekDate}
-        {date}
+    <div className="news">
+        <NewsImage image={image} />
+        <NewsContent {...remaining}/>
     </div>
     )
 }

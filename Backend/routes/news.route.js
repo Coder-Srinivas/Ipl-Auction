@@ -1,6 +1,9 @@
 const express = require('express');
 const axios = require('axios');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
+global.document = new JSDOM("random").window.document;
 const router = express.Router();
 // const key = process.env.NEWS_KEY || 'pub_5928a18d3b8bc5ca9ba7a30e20af0b5bcd';
 // const url = `https://newsdata.io/api/1/news?apikey=${key}&country=in&category=sports&q=cricket`;
@@ -8,12 +11,20 @@ const router = express.Router();
 router.get("/news", (req, res) => {
     axios.get("https://timesofindia.indiatimes.com/rssfeeds/54829575.cms?feedtype=sjson").then((response) => {
         const results = response.data.channel.item.map((article) => {
-            const array = article.description.split("\"");
+            const div = document.createElement('div');
+            div.innerHTML = article.description;
+            let anchorTag = div.getElementsByTagName('a');
+            const imageTag = anchorTag[0].getElementsByTagName('img');
+            anchorTag[0].parentNode.removeChild(anchorTag[0])
+            
+            const image = imageTag[0].src;
+            const description = div.innerHTML;
+            
             const dates = article.pubDate.split(",");
             return {
                 title: article.title,
-                image: array[array.length - 2].trim(),
-                description: array[array.length - 1].replace("/></a>", '').trim(),
+                image,
+                description,
                 weekDate: dates[0],
                 date: dates[1]
             }
