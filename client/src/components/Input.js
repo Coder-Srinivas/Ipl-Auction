@@ -18,4 +18,3 @@ const Input = ({ type, placeholder, onChange, icon, error, title }) => {
 }
 
 export default Input
-

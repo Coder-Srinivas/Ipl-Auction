@@ -8,6 +8,13 @@
     min-height: 25rem;
     padding: 2rem;
 
+    &-loader{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25rem;
+    }
+    
     &-image {
         width: auto;
         height: 100%;
@@ -19,10 +26,10 @@
 
     &-container {
         @include glassmorphism;
-        padding: 0 1rem 0 8rem;
+        padding: 0 1rem 0 9rem;
         width: auto;
         height: 100%;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 15% 50%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 16% 50%);
         background-color: $background-color-tertiary;
     }
 
@@ -87,8 +94,6 @@
             font-weight: 800;
             padding: .5rem 0 1rem 0;
         }
-
-
     
     }
 }

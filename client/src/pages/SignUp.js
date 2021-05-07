@@ -14,6 +14,7 @@ const SignUp = (props) => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({
         email: '',
         password: '',
@@ -52,8 +53,11 @@ const SignUp = (props) => {
         if(errors.email !== '' || errors.password !== ''){
             return;
         }
+
+        setLoading(true);
         const data = await register(username, email, password);
-    
+        setLoading(false);
+
         if(!data.success){
             return setErrors(prev => ({
                 ...prev,
@@ -76,6 +80,7 @@ const SignUp = (props) => {
             data = {data}
             onFormSubmit = {handleSubmit}
             error = {errors.form}
+            loading = {loading}
         />
     )
 }

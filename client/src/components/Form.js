@@ -1,5 +1,5 @@
 import Input from './Input';
-
+import Loader from './Loading.component';
 
 /*
 Elements passed to form:
@@ -9,10 +9,11 @@ Elements passed to form:
 3) An additional message function, could be null.
 4) onFormSubmit function
 5) error 
+6) loading
 
 */
 
-const Form = ({ title, data, onFormSubmit, message = () => {}, error }) => {
+const Form = ({ title, data, onFormSubmit, message = () => {}, error, loading }) => {
     return (
         <div className="form">
             <div className="form-container">
@@ -21,9 +22,9 @@ const Form = ({ title, data, onFormSubmit, message = () => {}, error }) => {
                     {data.map((inputFields, index) => {
                         return <Input key={index} {...inputFields} />
                     })}
-                    <div className="btn">
+                    {!loading? <div className="btn">
                         <input type='submit' value={title} className="btn-link"/>
-                    </div>
+                    </div> : <Loader size="2"/> }
                 </form>
                 <p className={error === '' ? 'invisible' : 'error'}>{error}</p>
                 <div className="form-container-additional">

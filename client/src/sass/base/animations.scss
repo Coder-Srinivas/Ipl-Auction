@@ -32,16 +32,12 @@
     }
 }
 
-@keyframes wave {
-    0% {
-    transform: translate(-50%) rotate(-180deg);
-        
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
     }
-    50%{
-        top: 20px;
+
+    100%{
+        transform: rotate(360deg);
     }
-      
-    100% {
-        transform: translate(-50%) rotate(360deg);
-    }
-  }
+}

@@ -42,7 +42,7 @@
             left: 0;
             right: 0;
             transform: scale(0, 1);
-            transition: transform ease-in-out 250ms;
+            transition: transform ease-in-out .25s;
         }
 
         &-content:hover::before {

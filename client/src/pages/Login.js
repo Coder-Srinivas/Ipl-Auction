@@ -13,6 +13,7 @@ const Login = (props) => {
     const { setUser } = useContext(UserContext); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({
         email: '',
         password: '',
@@ -57,8 +58,10 @@ const Login = (props) => {
         if(errors.email !== '' || errors.password !== ''){
             return;
         }
-        const data = await login(email, password);
 
+        setLoading(true);
+        const data = await login(email, password);
+        setLoading(false);
         if(!data.success){
             return setErrors(prev => ({
                 ...prev,
@@ -81,6 +84,7 @@ const Login = (props) => {
             onFormSubmit = {handleSubmit}
             message = {message}
             error = {errors.form}
+            loading = {loading}
         />
     )
 }

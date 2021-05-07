@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import NewsCard from './NewsCard';
+import Loading from './Loading.component';
+import Error from './Error';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,25 +17,37 @@ const News = () => {
         fetchNews().then((response) => {
             setNews(response);
         }).catch((error) => {
+            setNews([]);
             setError(true);
         })
     }, [])
 
     if(!news){
-        return <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem repudiandae labore animi a reiciendis dignissimos voluptate, enim saepe pariatur commodi deserunt, beatae minus, impedit soluta hic rem ab provident nesciunt.</h1>
+        return (
+        <div className="news-loader">
+            <Loading />
+        </div>
+    )}
+
+    if(error) {
+        return <Error text="Sorry, unable to fetch the news, please try reloading the page."/>
     }
 
-    var settings = {
-        dots: true,
+    const settings = {
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true
     };
+
     return (
     <Slider {...settings}>
-        {news.map((article) => {
-            return <NewsCard {...article} />
+        {news.map((article, index) => {
+            return <NewsCard key={index} {...article} />
         })}
     </Slider>
     )
