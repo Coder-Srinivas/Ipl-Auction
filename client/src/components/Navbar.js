@@ -2,13 +2,14 @@ import Bars from './Bars';
 import { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../hooks/UserContext';
+import Loader from './Loading.component';
 
 const { logout } = require('../services/auth.service');
 
 const Navbar = () => {
 
     const [barState, setBarState] = useState(false);
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser, loading } = useContext(UserContext);
     let history = useHistory();
 
     const handleClick = async () => {
@@ -29,9 +30,11 @@ const Navbar = () => {
                 <Link to="/rules" className="nav-container-main-content">Rules</Link>
             </nav>
 
-            <button className="button" onClick={() => (handleClick())}>
-                {user? "Logout" : "Login"}
-            </button>
+            <div className={barState ? "activate" : "deactivate"}>
+                {!loading? <button className="button" onClick={() => (handleClick())}>
+                    {user? "Logout" : "Login"}
+                </button>: <Loader size="2"/>}
+            </div>
 
             <div className="bar-container">
                 <Bars barState={barState} setBarState={setBarState}/>

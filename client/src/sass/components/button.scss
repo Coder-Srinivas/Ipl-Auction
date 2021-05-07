@@ -1,11 +1,15 @@
 .button{
-  position: absolute;
+  position: relative;
+  display: inline-block;
   padding: .4rem 1.2rem;
   border-radius: 30px;
   transition: transform .8s;
+  text-transform: uppercase;
+  font-weight: 700;
   overflow: hidden;
   border: none;
   outline: none;
+  background-color: $theme-color3;
   z-index: 1;
 
   &::before{
@@ -19,7 +23,7 @@
     right: 0;
     bottom: 0;
     border-radius: 50%;
-    background-color: red;
+    background-color: $theme-color;
     transition: transform .8s;
   }
 

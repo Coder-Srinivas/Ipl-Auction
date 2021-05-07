@@ -22,9 +22,7 @@ const Form = ({ title, data, onFormSubmit, message = () => {}, error, loading })
                     {data.map((inputFields, index) => {
                         return <Input key={index} {...inputFields} />
                     })}
-                    {!loading? <div className="btn">
-                        <input type='submit' value={title} className="btn-link"/>
-                    </div> : <Loader size="2"/> }
+                    {!loading? <div className="center"> <button type="submit" className="button">{title}</button> </div> : <Loader size="2"/> }
                 </form>
                 <p className={error === '' ? 'invisible' : 'error'}>{error}</p>
                 <div className="form-container-additional">
