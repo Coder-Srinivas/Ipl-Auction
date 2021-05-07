@@ -4,7 +4,7 @@ import NewsDate from './NewsDate';
 
 const NewsContent = ({title, description, weekDate, date}) => {
     return (
-        <div className="news-content-container">
+        <div className="news-container">
             <div className="news-content">
                 <NewsTitle title={title} />
                 <NewsDescription description={description} />
