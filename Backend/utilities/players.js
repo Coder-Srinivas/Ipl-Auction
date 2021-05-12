@@ -46,8 +46,8 @@ const disconnect = async(browser) => {
 }
 
 const scrollToBottom = async(page) => {
-    const scrollStep = 100;
-    const scrollDelay = 100;
+    const scrollStep = 80;
+    const scrollDelay = 150;
     await scrollPageToBottom(page, scrollStep, scrollDelay);
 }
 
@@ -67,47 +67,110 @@ const getAllSquads = async () => {
 const getStats = async (playerProfile, browser) => {
     const page = await browser.newPage();
     await page.goto(playerProfile, { waitUntil: 'networkidle2' });
-    const scrollStep = 100;
-    const scrollDelay = 100;
-    await scrollPageToBottom(page, scrollStep, scrollDelay);
 
     const stats = await page.evaluate(() => {
 
-        const table = document.querySelectorAll('.table')
-        const battingTable = table[0]
-        const bowlingTable = table[1]
-        const careerRow = battingTable.querySelector('.player-stats-table__highlight')
-        const careerRowValues = careerRow.querySelectorAll('td')
-        const labelRow = battingTable.querySelector('tr')
-        const labelValues = labelRow.querySelectorAll('th');
-        let careerRowObj = [...careerRowValues];
-        let labelsObj = [...labelValues];
-        labelsObj = labelsObj.splice(1);
-        careerRowObj = careerRowObj.splice(1);
-    
-        const stats = labelsObj.map((label, index) => {
-            return{
-                label: label.innerText,
-                value: careerRowObj[index].innerText
-            }
-        })
-        
-        return stats;
-    })
-    
-    console.log({
-        stats
-    })
+        const getBattingStats = () => {
+            const battingTable = table[0]
+            const careerRow = battingTable.querySelector('.player-stats-table__highlight')
+            const careerRowValues = careerRow.querySelectorAll('td')
+            const labelRow = battingTable.querySelector('tr')
+            const labelValues = labelRow.querySelectorAll('th');
+            let careerRowObj = [...careerRowValues];
+            let labelsObj = [...labelValues];
+            labelsObj = labelsObj.splice(1);
+            careerRowObj = careerRowObj.splice(1);
+            const stats = labelsObj.map((label, index) => {
+                return{
+                    label: label.innerText,
+                    value: careerRowObj[index].innerText
+                }
+            })
 
+            return stats;
+        }
+
+        const getBowlingStats = () => {
+            const bowlingTable = table[1];
+            const careerRow = bowlingTable.querySelector('.player-stats-table__highlight')
+            const careerRowValues = careerRow.querySelectorAll('td')
+            const labelRow = bowlingTable.querySelector('tr')
+            const labelValues = labelRow.querySelectorAll('th');
+            let careerRowObj = [...careerRowValues];
+            let labelsObj = [...labelValues];
+            labelsObj = labelsObj.splice(1);
+            careerRowObj = careerRowObj.splice(1);
+            const stats = labelsObj.map((label, index) => {
+                return{
+                    label: label.innerText,
+                    value: careerRowObj[index].innerText
+                }
+            })
+
+            return stats;
+        }
+
+        const table = document.querySelectorAll('.table');
+        let role = document.querySelector('.player-details__value');
+
+        if(table.length == 0){
+            return{}
+        }
+
+        if(!role){
+            role = undefined;
+        }else{
+            role = role.innerText;
+        }
+
+        if(!role || role == "All-rounder"){
+            const batting = getBattingStats();
+            const bowling = getBattingStats();
+
+            return {
+                role,
+                batting,
+                bowling
+            }
+        }
+        
+        if(role == "Wicketkeeper batsman" || role == "Batsman"){
+            const batting = getBattingStats();
+
+            return {
+                role,
+                batting
+            }
+        }
+        
+        const bowling = getBowlingStats();
+
+        return {
+            role,
+            bowling
+        }
+    })
+    
     await page.close();
     return stats;
 }
 
-getAllSquads().then(async (browser) => {
-    const s1 = allSquads[0];
-    const players = s1.players;
-    //console.log(response);
-    for (player of players){
-        await getStats(player.profile, browser)
-    }
-});
+const fetchPlayers = async () => {
+    return await getAllSquads().then(async (browser) => {
+        for (squad of allSquads){
+            const players = squad.players;
+            for (const [index, player] of players.entries()){
+                const stats = await getStats(player.profile, browser)
+                players[index]['stats'] = stats;
+            }
+        }
+        disconnect(browser);
+        return allSquads;
+    });
+}
+
+fetchPlayers().then((response) => {
+    console.log(response);
+})
+
+module.exports = {fetchPlayers};
