@@ -1,10 +1,19 @@
+import { useEffect, useState } from "react";
+import PlayerCard from '../components/PlayerCard';
+const { fetchSquads } = require('../services/players.service');
 const Auction = (props) => {
 
+    const [squads, setSquads] = useState(null);
+    useEffect(() => {
+        fetchSquads().then((response) => {
+            setSquads(response);
+        })
+    }, [])
+
     return(
-        <div>
-            <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum tempore illum, accusantium ipsa provident inventore. Eos omnis distinctio cum natus? Adipisci tenetur hic molestias, praesentium natus saepe consectetur suscipit aliquid necessitatibus ut quae earum maxime magnam expedita perferendis optio rem ad magni eligendi nostrum, et dolorem eos possimus. Earum, fuga.
-            </h1>
+        <div className="auction">
+            {squads? <PlayerCard {...squads.squads[0].players[0]}/> : ''}
+            
         </div>
     )
 }

@@ -6,4 +6,5 @@ const fetchNews = async () => {
         return response.data.results;
     })
 }
+
 module.exports = { fetchNews }

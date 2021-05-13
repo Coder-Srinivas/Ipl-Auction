@@ -21,6 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.5",
     "morgan": "^1.10.0",
-    "puppeteer": "^9.1.1"
+    "node-schedule": "^2.0.0",
+    "puppeteer": "^9.1.1",
+    "puppeteer-autoscroll-down": "^0.1.6"
   }
 }

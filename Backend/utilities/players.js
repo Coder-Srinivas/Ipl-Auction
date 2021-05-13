@@ -37,7 +37,7 @@ const getSquad = async (squadName, browser) => {
 
 
 const connect = async () => {
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch();
     return browser;
 }
 
@@ -125,7 +125,7 @@ const getStats = async (playerProfile, browser) => {
 
         if(!role || role == "All-rounder"){
             const batting = getBattingStats();
-            const bowling = getBattingStats();
+            const bowling = getBowlingStats();
 
             return {
                 role,
@@ -169,8 +169,4 @@ const fetchPlayers = async () => {
     });
 }
 
-fetchPlayers().then((response) => {
-    console.log(response);
-})
-
-module.exports = {fetchPlayers};
+module.exports = fetchPlayers;
