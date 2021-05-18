@@ -1,9 +1,6 @@
 .playerCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 35rem;
+    padding: .2rem;
+    width: 21rem;
     height: auto;
     margin: 1rem;
     margin-left: auto;
@@ -13,13 +10,15 @@
     background-color: $background-color-tertiary;
 
     &-image {
+        background-color: none;
         position: relative;
+        width: 100%;
         display: flex;
         gap: 1rem;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        height: 100%;
-        width: 100%;
 
         h2{
             display: block;
@@ -29,22 +28,25 @@
         &::before{
             position: absolute;
             content: '';
-            width: 1%;
-            height: 60%;
-            top: 50%;
-            left: 95%;
+            width: 50%;
+            height: 1.5%;
+            top: 102%;
+            left: 25.5%;
             right: 0;
             bottom: 0;
             background-color: $theme-color;
-            transform: translate(0, -50%);
         }
     }
 
 
     &-info {
-        height: 55%;
+        padding: .4rem;
 
         &-role{
+            text-align: center;
+            color: $hover-color;
+            text-transform: capitalize;
+            letter-spacing: 1.5px;
             margin: 1rem;
         }
 
@@ -54,17 +56,38 @@
             flex-direction: row;
             width: 100%;
             height: auto;
+
+            &-title{
+                letter-spacing: 1.5px;
+                padding: 0 1rem;
+                width: 100%;
+            }
         }
 
-        &-stat-container{
+        &-slider {
+            width: auto;
+        }
 
-            span{
-                margin-right: .5rem;
+        &-stat {
+        
+            &-container{
+                span{
+                    margin-right: .5rem;
+                }
+                display: inline-block;
+                width: 20%;
+                height: 1rem;
+                margin: 1rem;
             }
-            display: inline-block;
-            width: 20%;
-            height: 1rem;
-            margin: 1rem;
+
+            &-value {
+                color: $theme-color3;
+            }
+
+            &-label {
+                border-left: 2px solid $hover-color;
+                padding-left: .3rem;
+            }
         }
     }
 

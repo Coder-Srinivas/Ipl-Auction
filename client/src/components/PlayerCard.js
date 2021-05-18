@@ -1,6 +1,22 @@
 import PlayerStats from './PlayerStats';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const PlayerCard = ({image, name, squad, stats}) => {
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true
+    };
+
     return(
         <div className="playerCard">
             <div className="playerCard-image">
@@ -12,8 +28,20 @@ const PlayerCard = ({image, name, squad, stats}) => {
                 <div className="playerCard-info-role">
                     {stats.role}
                 </div>
-                <PlayerStats stats={stats.batting}/>
-                <PlayerStats stats={stats.batting}/>
+                {
+                    (stats.batting && stats.bowling) ?
+                    <div className="playerCard-info-slider"> 
+                        <Slider {...settings} >
+                            <PlayerStats stats={stats.batting} role="Batting"/>
+                            <PlayerStats stats={stats.batting} role="Bowling"/>
+                        </Slider>
+                    </div>
+                    :
+                    stats.batting ?
+                    <PlayerStats stats={stats.batting} role="Batting"/>
+                    :
+                    <PlayerStats stats={stats.bowling} role="Bowling"/>
+                }
             </div>
         </div>
     )
