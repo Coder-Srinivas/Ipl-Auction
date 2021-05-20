@@ -89,7 +89,7 @@ router.get("/user", auth, async (req, res) => {
 
 router.get("/logout", auth, async (req, res) => {
 
-    await User.findByIdAndUpdate(req.id, { $pull: {}})
+    await User.findByIdAndUpdate(req.id, { $pull: { "tokens": { token: req.token } }});
     res.clearCookie('jwt').send({
         success: true,
         message: "Successfully logged out"

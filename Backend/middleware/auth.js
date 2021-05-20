@@ -6,6 +6,7 @@ const auth = (req, res, next) => {
         try{
             const data = jwt.verify(cookies.jwt, process.env.SECRET);
             req.id = data.id;
+            req.token = cookies.jwt;
             return next();
         }catch(error){
             console.log(error.message);
