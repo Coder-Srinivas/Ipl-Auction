@@ -12,8 +12,8 @@ const Auction = (props) => {
 
     return(
         <div className="auction">
-            {squads? <PlayerCard {...squads.squads[0].players[0]}/> : ''}
-            
+            {squads? <PlayerCard {...squads.squads[5].players[2]}/> : ''}
+            <button className="button">Bid</button>
         </div>
     )
 }

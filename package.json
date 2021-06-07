@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme",
   "dependencies": {
     "react-slick": "^0.28.1",
+    "socket.io": "^4.1.2",
     "validator": "^13.6.0"
   }
 }

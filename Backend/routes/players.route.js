@@ -6,7 +6,6 @@ const { auth } = require('../middleware/auth');
 let squads = [];
 const router = express.Router();
 
-
 schedule.scheduleJob('fetching-squads', '0 0 * * *', () => {
     try{
         getSquads().then((response) => {

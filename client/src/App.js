@@ -29,7 +29,7 @@ function App() {
             <PublicRoute exact path="/login" component={Login}/>
             <PublicRoute exact path="/signup" component={SignUp}/>
             <Route exact path="/about" render={(props) => <About {...props}/>}/>
-            <PrivateRoute exact path="/auction" component={Auction}/>
+            <Route exact path="/auction" component={Auction}/>
           </Switch>
       </div>
     </UserContext.Provider>

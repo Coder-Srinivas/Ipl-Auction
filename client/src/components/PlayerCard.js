@@ -33,7 +33,7 @@ const PlayerCard = ({image, name, squad, stats}) => {
                     <div className="playerCard-info-slider"> 
                         <Slider {...settings} >
                             <PlayerStats stats={stats.batting} role="Batting"/>
-                            <PlayerStats stats={stats.batting} role="Bowling"/>
+                            <PlayerStats stats={stats.bowling} role="Bowling"/>
                         </Slider>
                     </div>
                     :
