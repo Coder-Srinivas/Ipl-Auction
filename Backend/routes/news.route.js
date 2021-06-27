@@ -13,13 +13,11 @@ router.get("/news", (req, res) => {
         const results = response.data.channel.item.map((article) => {
             const div = document.createElement('div');
             div.innerHTML = article.description;
-            let anchorTag = div.getElementsByTagName('a');
-            const imageTag = anchorTag[0].getElementsByTagName('img');
-            anchorTag[0].parentNode.removeChild(anchorTag[0])
-            
+            const imageTag = div.getElementsByTagName('img');
             const image = imageTag[0].src;
-            const description = div.innerHTML;
+            imageTag[0].parentNode.removeChild(imageTag[0]);
             
+            const description = div.innerHTML;
             const dates = article.pubDate.split(",");
             return {
                 title: article.title,

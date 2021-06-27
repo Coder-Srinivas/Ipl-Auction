@@ -4,7 +4,7 @@ const Input = ({ type, placeholder, onChange, icon, error, title }) => {
     return (
         <div className='form-container-input-container'>
             <label htmlFor={type} className='form-container-desc'>{title}: </label>
-            <FontAwesomeIcon icon={icon} className='form-container-icon'/>
+            {icon ? <FontAwesomeIcon icon={icon} className='form-container-icon'/> : ''}
             <input
                 id={type}
                 className='form-container-input'

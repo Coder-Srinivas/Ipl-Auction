@@ -1,31 +1,42 @@
-import Input from '../components/Input';
-const { handleChange } = require('../utilities/handleChanges');
+import Form from './Form';
 
-const JoinAuction = () => {
+const JoinAuction = ({socket, user, room, setRoom, errors, loading, setLoading}) => {
 
-    const [room, setRoom] = useState('');
+    const data = [{
+        type: "room",
+        title: "Room Id",
+        placeholder: "Enter the auction room id", 
+        onChange: (value) => {setRoom(value)}, 
+        icon: '',
+        error: errors.room
+    }]
 
-    const joinRoom = () => {
-        
+    const message = () => {
+        return null;
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setLoading(true);
+        socket.emit("joinAuction", {
+            username: user.username,
+            room
+        })
+        setLoading(false);
+    }
+
     return (
-        <>
             <div>
-                <Input
-                    type="id"
-                    placeholder="Enter your the room id" 
-                    onChange={(value) => setRoom(value)}
-                    icon=''
-                    error=''
-                    title='Room id'
-                >
-                </Input>
-                <button className="button" onClick={}>
-                    Join Auction
-                </button>
+            <Form
+                title = "Join Auction"
+                data = {data}
+                onFormSubmit = {handleSubmit}
+                message = {message}
+                error = {errors.form}
+                loading = {loading}
+            />
             </div>
-        </>
-    )
+    )  
 }
 
 export default JoinAuction

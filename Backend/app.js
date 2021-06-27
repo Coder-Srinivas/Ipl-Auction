@@ -15,7 +15,12 @@ require('./database/connection');
 const clientUrl = process.env.DEV_REACT_URL || "http://localhost:3000";
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+    cors: {
+        origin: "http://localhost:3000",
+        credentials: true
+    }
+});
 
 //Middleware
 app.use(cookieParser());
@@ -33,18 +38,10 @@ app.use(newsRouter);
 app.use(playerRouter);
 
 const rooms = new Set();
-io.on('connection', (socket) => {
 
-    socket.on('create', ({room}, callback) => {
-        if(rooms.has(room)){
-            callback("That auction is taken!!! Try a different one", null);
-            return;
-        }
-    })
-    console.log("New connection");
-})
+require('./routes/socket.route')(io);
 
 server.listen(8000, () => {
-    User.collection.deleteMany({});
+    //User.collection.deleteMany({});
     console.log("Listening on port 8000")
 })

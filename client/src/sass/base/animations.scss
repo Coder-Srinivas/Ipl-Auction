@@ -41,3 +41,17 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes move-up {
+    0%{
+        transform: translateY(700px);
+    }
+
+    50%{
+        transform: translateY(0px);
+    }
+
+    100%{
+        transform: translateY(-800px);
+    }
+}
