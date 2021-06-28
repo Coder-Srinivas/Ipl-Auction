@@ -20,7 +20,11 @@ class User{
         return this.budget;
     }
 
-    add(player){
+    addPlayer(p, amount){
+        const player = {
+            player: p,
+            amount
+        }
         if(this.getTotalPlayers() > 11) {
             throw new Error("You have reached the max squad limit");
         }

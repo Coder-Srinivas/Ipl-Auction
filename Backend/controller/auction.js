@@ -1,18 +1,58 @@
 const User = require('./user');
 
 class Auction{
+
     constructor(room){
         this.users = []
         this.currentBidder = '';
         this.currentBid = 0;
-        this.timer = 500;
+        this.currentPlayer = '';
+        this.timer = 10;
         this.interval = null;
         this.room = room;
+        this.squad = 0;
+        this.player = 0;
+        this.confirm = 0;
     }
 
-    bid(bidder){
-        this.currentBidder = bidder; 
-        this.currentBid += 1;
+    bid(socket, bidder){
+        if(this.currentBidder == bidder){
+            return;
+        }
+        const user = this.findUser(bidder);
+        
+        if(this.currentBid >= 5){
+            if(user.budget < this.currentBid+1){
+                return socket.emit("bid-error", {
+                    message: "The current bid exceeds your budget."
+                })
+            }
+            this.currentBid += 1;
+        }else{
+            if(user.budget < this.currentBid+0.5){
+                return socket.emit("bid-error", {
+                    message: "The current bid exceeds your budget."
+                })
+            }
+            this.currentBid += 0.5
+        }
+        this.currentBidder = bidder;
+        this.resetTimer();
+    }
+
+    findUser(user){
+        const currentUser = this.users.find((u) => {
+            return u.user == user;
+        })
+        return currentUser;
+    }
+
+    servePlayer(squads){
+        const player = squads[this.squad].players[this.player];
+        this.currentPlayer = player;
+        this.room.emit("player", {
+            player
+        })
     }
 
     getCurrentBid(){
@@ -20,6 +60,13 @@ class Auction{
             bidder: this.currentBidder,
             bid: this.currentBid
         };
+    }
+
+    displayBidder(){
+        const currentBidder = this.getCurrentBid();
+        this.room.emit("bid", {
+            currentBidder
+        })
     }
 
     resetBid(){
@@ -44,7 +91,11 @@ class Auction{
 
     decrementClock() {
         if(this.timer == 0){
-            return;
+            if(this.currentBidder){
+                this.addPlayer(this.currentPlayer, this.currentBid);
+            }
+            this.clearTimer();
+            this.resetBid();
         }
         const time = this.timer;
         const room = this.room;
@@ -52,7 +103,19 @@ class Auction{
             time
         })
         this.timer--;
-        console.log(time);
+    }
+
+    gameOver(squads){
+        this.player++;
+        if(squads[this.squad].players.length == this.player){
+            this.player = 0;
+            this.squad++;
+            if(squads.length == this.squad){
+                this.room.emit("game-over")
+                return true;
+            }
+        }
+        return false;
     }
 
     addUser(user){
@@ -67,10 +130,27 @@ class Auction{
         }
         return true;
     }
+
+    next(squads){
+        this.confirm++;
+        if(this.confirm >= this.users.length){
+            if(!this.gameOver(squads)){
+                this.resetTimer();
+                this.resetBid();
+                this.startInterval();
+                this.servePlayer(squads);
+            }
+        }
+    }
+
     addPlayer(player, amount){
-        const currentUser = this.users.find(({user}) => user == this.currentBidder);
-        currentUser.addPlayer(player);
+        const currentUser = this.findUser(this.currentBidder);
+        currentUser.addPlayer(player, amount);
         currentUser.deduct(amount);
+        this.confirm = 0;
+        this.room.emit("users", {
+            users: this.users
+        })
     }
 }
 

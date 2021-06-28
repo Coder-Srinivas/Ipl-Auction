@@ -37,8 +37,6 @@ app.use(userRouter);
 app.use(newsRouter);
 app.use(playerRouter);
 
-const rooms = new Set();
-
 require('./routes/socket.route')(io);
 
 server.listen(8000, () => {

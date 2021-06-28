@@ -5,7 +5,6 @@ import { UserContext } from '../hooks/UserContext';
 // Components
 import JoinAuction from "../components/JoinAuction";
 import CreateAuction from "../components/CreateAuction";
-import PlayerCard from '../components/PlayerCard';
 import Game from '../components/Game';
 import Lobby from '../components/Lobby';
 
@@ -13,12 +12,11 @@ import io from 'socket.io-client';
 
 
 const url = process.env.BACKEND_URL || "http://localhost:8000";
-let socket;
-const { fetchSquads } = require('../services/players.service');
+
 
 const Auction = (props) => {
 
-    const [squads, setSquads] = useState(null);
+    const [socket, setSocket] = useState(io(url));
     const { user } = useContext(UserContext);
     const [room, setRoom] = useState('');
     const [loading, setLoading] = useState(false);
@@ -31,17 +29,10 @@ const Auction = (props) => {
     const [users, setUsers] = useState([]);
     const [created, setCreated] = useState(false);
     const [join, setJoin] = useState(false);
+    const [me, setMe] = useState('');
 
     useEffect(() => {
-        fetchSquads().then((response) => {
-            setSquads(response);
-        })
-        socket  = io(url);
-
-        socket.on("users", data => {
-            setUsers(data.users);
-        })
-    
+        console.log(socket);
         socket.on("join-result", (message) => {
             if(message.success){
                 console.log(message)
@@ -60,10 +51,18 @@ const Auction = (props) => {
         })
     }, [])
 
+    useEffect(() => {
+        socket.on("users", data => {
+            setUsers(data.users);
+            const myself = data.users.find((u) => u.user === user.username)
+            setMe(myself);
+            console.log(user.username, data.users);
+        })
+    }, [user])
+
     return(
         <div className="auction">
-            {console.log(user)}
-            { play ? <Game room={room} socket={socket} users={users} />
+            { play ? <Game room={room} socket={socket} users={users} user={user} me={me}/>
                 : (!created && !join) ? 
                 <CreateAuction socket={socket} user={user} setCreated={setCreated} setJoin={setJoin} setRoom={setRoom}/>
                 : created ? 

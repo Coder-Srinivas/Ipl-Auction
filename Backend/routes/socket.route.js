@@ -1,4 +1,4 @@
-const { create, join, start, play } = require('../controller/game');
+const { create, join, start, play, bid, next } = require('../controller/game');
 
 const socketRouter = (io) => {
 
@@ -15,8 +15,14 @@ const socketRouter = (io) => {
             start(io, data);
         })
         socket.on('start', data => {
-            play(io, socket, data);
+            play(data);
         })
+        socket.on('bid', data => {
+            bid(socket, data);
+        })
+        socket.on('next', data => {
+            next(io, data)
+        }) 
     });
 };
 
