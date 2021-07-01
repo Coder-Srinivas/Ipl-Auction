@@ -16,8 +16,7 @@ const url = process.env.BACKEND_URL || "http://localhost:8000";
 
 const Auction = (props) => {
 
-    const [socket, setSocket] = useState(io(url));
-    const { user } = useContext(UserContext);
+    const [socket, setSocket] = useState(io(url));    const { user } = useContext(UserContext);
     const [room, setRoom] = useState('');
     const [loading, setLoading] = useState(false);
     const [play, setPlay] = useState(false);
