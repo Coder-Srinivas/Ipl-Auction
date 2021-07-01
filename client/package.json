@@ -20,7 +20,9 @@
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.1.2",
     "uuid": "^8.3.2",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "react-slick": "^0.28.1",
+    "validator": "^13.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

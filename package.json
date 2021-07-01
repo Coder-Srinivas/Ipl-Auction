@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "cd Backend && npm run dev",
-    "dev-client": "cd client && npm run start",
-    "prepare": "husky install"
+    "dev-client": "cd client && npm run start"
   },
   "repository": {
     "type": "git",
@@ -18,14 +17,9 @@
     "url": "https://github.com/Coder-Srinivas/Ipl-Auction/issues"
   },
   "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme",
-  "dependencies": {
-    "husky": "^7.0.0",
-    "react-slick": "^0.28.1",
-    "socket.io": "^4.1.2",
-    "validator": "^13.6.0"
-  },
   "devDependencies": {
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0"
   },
   "husky": {
     "hooks": {
