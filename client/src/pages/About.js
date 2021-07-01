@@ -57,7 +57,7 @@ const About = () => {
           elit scelerisque mauris pellentesque pulvinar pellentesque habitant
           morbi tristique senectus et netus et malesuada fames ac turpis egestas
           maecenas pharetra convallis posuere morbi leo urna molestie at
-          elementum eu facilisis sed odio morbi quis commodo odio
+          elementum eu facilisis sed odio morbi quis commodo odio h
         </p>
       </div>
     </div>
