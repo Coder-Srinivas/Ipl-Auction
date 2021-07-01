@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme",
   "devDependencies": {
     "husky": "^4.3.8",
-    "lint-staged": "^11.0.0"
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2"
   },
   "husky": {
     "hooks": {
