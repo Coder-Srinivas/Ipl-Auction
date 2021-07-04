@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "cd Backend && npm run dev",
-    "dev-client": "cd client && npm run start",
-    "prepare": "husky install"
+    "dev-client": "cd client && npm run start"
   },
   "repository": {
     "type": "git",
@@ -18,7 +17,20 @@
     "url": "https://github.com/Coder-Srinivas/Ipl-Auction/issues"
   },
   "homepage": "https://github.com/Coder-Srinivas/Ipl-Auction#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "husky": "^7.0.0"
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
   }
 }
