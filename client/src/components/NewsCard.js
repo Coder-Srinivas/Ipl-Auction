@@ -1,14 +1,13 @@
-import NewsImage from './NewsImage';
-import NewsContent from './NewsContent';
+import NewsImage from "./NewsImage";
+import NewsContent from "./NewsContent";
 
-const NewsCard = ({ image, ...remaining}) => {
-
-    return (
+const NewsCard = ({ image, ...remaining }) => {
+  return (
     <div className="news">
-        <NewsImage image={image} />
-        <NewsContent {...remaining}/>
+      <NewsImage image={image} />
+      <NewsContent {...remaining} />
     </div>
-    )
-}
+  );
+};
 
-export default NewsCard
+export default NewsCard;

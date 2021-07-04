@@ -1,9 +1,9 @@
-.button{
+.button {
   position: relative;
   display: inline-block;
-  padding: .4rem 1.2rem;
+  padding: 0.4rem 1.2rem;
   border-radius: 30px;
-  transition: transform .8s;
+  transition: transform 0.8s;
   text-transform: uppercase;
   font-weight: 700;
   overflow: hidden;
@@ -12,9 +12,9 @@
   background-color: $theme-color3;
   z-index: 1;
 
-  &::before{
+  &::before {
     z-index: -1;
-    content: '';
+    content: "";
     height: 200%;
     width: 200%;
     position: absolute;
@@ -24,10 +24,10 @@
     bottom: 0;
     border-radius: 50%;
     background-color: $theme-color;
-    transition: transform .8s;
+    transition: transform 0.8s;
   }
 
-  &:hover::before{
+  &:hover::before {
     transform: translateY(-2.7rem);
   }
 }

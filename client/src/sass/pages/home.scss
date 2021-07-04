@@ -1,8 +1,8 @@
-.home{
-    @include glassmorphism;
-    min-height: 100vh;
+.home {
+  @include glassmorphism;
+  min-height: 100vh;
 
-    &-title {
-        padding: 0 2rem;
-    }
+  &-title {
+    padding: 0 2rem;
+  }
 }

@@ -1,5 +1,5 @@
-const express = require('express');
-const axios = require('axios');
+const express = require("express");
+const axios = require("axios");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
@@ -9,36 +9,40 @@ const router = express.Router();
 // const url = `https://newsdata.io/api/1/news?apikey=${key}&country=in&category=sports&q=cricket`;
 
 router.get("/news", (req, res) => {
-    axios.get("https://timesofindia.indiatimes.com/rssfeeds/54829575.cms?feedtype=sjson").then((response) => {
-        const results = response.data.channel.item.map((article) => {
-            const div = document.createElement('div');
-            div.innerHTML = article.description;
-            const imageTag = div.getElementsByTagName('img');
-            const image = imageTag[0].src;
-            imageTag[0].parentNode.removeChild(imageTag[0]);
-            
-            const description = div.innerHTML;
-            const dates = article.pubDate.split(",");
-            return {
-                title: article.title,
-                image,
-                description,
-                weekDate: dates[0],
-                date: dates[1]
-            }
-        })
-        res.send({
-            success: true,
-            results
-        })
-        
-    }).catch((error) => {
-        res.send({
-            success: false,
-            message: error.message
-        })
+  axios
+    .get(
+      "https://timesofindia.indiatimes.com/rssfeeds/54829575.cms?feedtype=sjson"
+    )
+    .then((response) => {
+      const results = response.data.channel.item.map((article) => {
+        const div = document.createElement("div");
+        div.innerHTML = article.description;
+        const imageTag = div.getElementsByTagName("img");
+        const image = imageTag[0].src;
+        imageTag[0].parentNode.removeChild(imageTag[0]);
+
+        const description = div.innerHTML;
+        const dates = article.pubDate.split(",");
+        return {
+          title: article.title,
+          image,
+          description,
+          weekDate: dates[0],
+          date: dates[1],
+        };
+      });
+      res.send({
+        success: true,
+        results,
+      });
     })
-})
+    .catch((error) => {
+      res.send({
+        success: false,
+        message: error.message,
+      });
+    });
+});
 
 // let date = new Date();
 // let prevResults = [];
@@ -73,4 +77,4 @@ router.get("/news", (req, res) => {
 //     })
 // })
 
-module.exports = router
+module.exports = router;

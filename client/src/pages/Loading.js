@@ -1,11 +1,11 @@
-import Loader from '../components/Loading.component';
+import Loader from "../components/Loading.component";
 
 const Loading = () => {
-    return(
+  return (
     <div className="loading">
-        <Loader/>
+      <Loader />
     </div>
-    )
-}
+  );
+};
 
 export default Loading;

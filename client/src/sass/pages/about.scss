@@ -1,6 +1,6 @@
 .about {
   @include glassmorphism;
-  
+
   &-head {
     text-align: center;
   }
@@ -9,7 +9,7 @@
     margin: 10% 15% auto 15%;
     background-color: #171717;
     @include glassmorphism;
-    border-top: 1px solid rgba(255, 255, 255, .5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-right: none;
     padding: 2rem 3rem;
     border-radius: 20px;
@@ -26,8 +26,8 @@
 
       &-1 {
         cursor: default;
-        &:hover{
-            transform: skewX(-15deg);
+        &:hover {
+          transform: skewX(-15deg);
         }
       }
       &-2 {
@@ -47,7 +47,7 @@
         -webkit-animation: pulse 0.8s ease-in-out infinite alternate;
         animation: pulse 0.8s ease-in-out infinite alternate;
       }
-      &-1{
+      &-1 {
         margin-left: 0.5%;
       }
       &-2 {
@@ -87,15 +87,15 @@
         text-align: center;
         width: 100%;
       }
-      &-social{
+      &-social {
         text-align: center;
         margin: 10% 0 0 35%;
         padding: 2%;
-        &-1{
+        &-1 {
           margin-right: 10%;
         }
-        &-2{
-        //  margin-left: 10%;
+        &-2 {
+          //  margin-left: 10%;
         }
       }
     }

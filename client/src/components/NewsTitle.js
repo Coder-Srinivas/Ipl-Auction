@@ -1,9 +1,5 @@
-const NewsTitle = ({title}) => {
-    return (
-        <div className="news-content-title">
-            {title}
-        </div>
-    )
-}
+const NewsTitle = ({ title }) => {
+  return <div className="news-content-title">{title}</div>;
+};
 
-export default NewsTitle
+export default NewsTitle;
