@@ -17,12 +17,12 @@ const CreateAuction = ({socket, user, setCreated, setJoin, setRoom}) => {
     }
 
     return (
-        <>
-            <div className="create-auction-holder">
-                <button onClick={() => {newAuction()}} className="button">Create Auction</button>
-                <button onClick={() => {joinAuction()}} className="button">Join Auction</button>
+        <div className="form">
+            <div className="form-container">
+                <button onClick={() => {newAuction()}} className="create-auction-button button">Create Auction</button>
+                <button onClick={() => {joinAuction()}} className="create-auction-button button">Join Auction</button>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -16,7 +16,8 @@ const url = process.env.BACKEND_URL || "http://localhost:8000";
 
 const Auction = (props) => {
 
-    const [socket, setSocket] = useState(io(url));    const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const [socket] = useState(io(url), {user});
     const [room, setRoom] = useState('');
     const [loading, setLoading] = useState(false);
     const [play, setPlay] = useState(false);
@@ -48,7 +49,7 @@ const Auction = (props) => {
             console.log("Started");
             setPlay(true);
         })
-    }, [])
+    }, [socket])
 
     useEffect(() => {
         socket.on("users", data => {
@@ -57,7 +58,7 @@ const Auction = (props) => {
             setMe(myself);
             console.log(user.username, data.users);
         })
-    }, [user])
+    }, [user, socket])
 
     return(
         <div className="auction">

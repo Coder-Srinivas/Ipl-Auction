@@ -4,7 +4,7 @@ const socketRouter = (io) => {
 
     io.on('connection', socket => {
         console.log('Socket connected', socket.id);
-
+        console.log(socket.request);
         socket.on('createAuction', data => {
             create(io, socket, data);
         });
@@ -22,7 +22,11 @@ const socketRouter = (io) => {
         })
         socket.on('next', data => {
             next(io, data)
-        }) 
+        })
+
+        socket.on('reconnect', data => {
+            console.log("reconnection ", data);
+        })
     });
 };
 

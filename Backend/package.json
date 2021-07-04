@@ -23,6 +23,7 @@
     "morgan": "^1.10.0",
     "node-schedule": "^2.0.0",
     "puppeteer": "^9.1.1",
-    "puppeteer-autoscroll-down": "^0.1.6"
+    "puppeteer-autoscroll-down": "^0.1.6",
+    "socket.io": "^4.1.2"
   }
 }
