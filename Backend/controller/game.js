@@ -31,7 +31,6 @@ const create = (io, socket, data) => {
 const join = (io, socket, data) => {
   const auction = liveAuctions.get(data.room);
   if (!auction) {
-    console.log(data, "Room does not exist");
     return socket.emit("join-result", {
       success: false,
       error: "Room does not exist!!",

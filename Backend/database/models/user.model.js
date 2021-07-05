@@ -69,8 +69,7 @@ UserSchema.methods.getPublicProfile = function () {
   return user;
 };
 
-UserSchema.statics.findByCredentials = async (params) => {
-  const { email, password } = params;
+UserSchema.statics.findByCredentials = async ({ email, password }) => {
   const user = await User.findOne({ email });
 
   if (!user) {

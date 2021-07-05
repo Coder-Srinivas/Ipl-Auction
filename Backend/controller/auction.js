@@ -55,10 +55,12 @@ class Auction {
   }
 
   getCurrentBid() {
-    return {
+    const bidder = {
       bidder: this.currentBidder,
       bid: this.currentBid,
     };
+
+    return bidder;
   }
 
   displayBidder() {
@@ -89,7 +91,7 @@ class Auction {
   }
 
   decrementClock() {
-    if (this.timer == 0) {
+    if (this.timer === 0) {
       if (this.currentBidder) {
         this.addPlayer(this.currentPlayer, this.currentBid);
       }
@@ -122,8 +124,8 @@ class Auction {
   }
 
   dupUser(user) {
-    const dup = this.users.filter((u) => user == u.user);
-    if (dup.length == 0) {
+    const dup = this.users.filter((u) => user === u.user);
+    if (dup.length === 0) {
       return false;
     }
     return true;
