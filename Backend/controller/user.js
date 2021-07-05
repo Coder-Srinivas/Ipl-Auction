@@ -25,29 +25,14 @@ class User {
       player: p,
       amount,
     };
-    if (this.getTotalPlayers() > 11) {
-      throw new Error("You have reached the max squad limit");
-    }
     switch (player.type) {
       case "Batsman":
-        if (this.getTotalBatsmen() > 5) {
-          throw new Error("You cannot have more than 5 batsman");
-        }
         this.batsman.push(player);
       case "Bowler":
-        if (this.getTotalBowlers() > 5) {
-          throw new Error("You cannot have more than 5 bowlers");
-        }
         this.bowlers.push(player);
       case "AllRounder":
-        if (this.getTotalAllRounders() > 3) {
-          throw new Error("You cannot have more than 3 AllRounders");
-        }
         this.allRounders.push(player);
       case "WicketKeeper":
-        if (this.getTotalWicketKeepers() > 2) {
-          throw new Error("You cannot have more than 2 WicketKeepers");
-        }
         this.wicketKeepers.push(player);
     }
     this.players.push(player);

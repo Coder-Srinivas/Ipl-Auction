@@ -2,6 +2,12 @@ const puppeteer = require("puppeteer");
 const scrollPageToBottom = require("puppeteer-autoscroll-down");
 let allSquads = [];
 
+const scrollToBottom = async (page) => {
+  const scrollStep = 80;
+  const scrollDelay = 150;
+  await scrollPageToBottom(page, scrollStep, scrollDelay);
+};
+
 const getSquad = async (squadName, browser) => {
   const url = `https://www.iplt20.com/teams/${squadName}/squad`;
   const page = await browser.newPage();
@@ -42,12 +48,6 @@ const connect = async () => {
 
 const disconnect = async (browser) => {
   await browser.close();
-};
-
-const scrollToBottom = async (page) => {
-  const scrollStep = 80;
-  const scrollDelay = 150;
-  await scrollPageToBottom(page, scrollStep, scrollDelay);
 };
 
 const getAllSquads = async () => {
@@ -115,7 +115,7 @@ const getStats = async (playerProfile, browser) => {
     const table = document.querySelectorAll(".table");
     let role = document.querySelector(".player-details__value");
 
-    if (table.length == 0) {
+    if (table.length === 0) {
       return {};
     }
 
