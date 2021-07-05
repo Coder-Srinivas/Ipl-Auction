@@ -1,5 +1,6 @@
 # Ipl-Auction
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4420544495894429ad49f62cc66c40fc)](https://app.codacy.com/gh/Coder-Srinivas/Ipl-Auction?utm_source=github.com&utm_medium=referral&utm_content=Coder-Srinivas/Ipl-Auction&utm_campaign=Badge_Grade_Settings)
   [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e3ba9e6a3bb84fc7a3c6905c8e1af48c)](https://app.codacy.com/gh/Coder-Srinivas/Ipl-Auction?utm_source=github.com&utm_medium=referral&utm_content=Coder-Srinivas/Ipl-Auction&utm_campaign=Badge_Grade)
   
 A Website designed to mimic the IPL Auction
