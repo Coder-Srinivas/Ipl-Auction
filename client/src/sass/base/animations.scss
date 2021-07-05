@@ -20,12 +20,15 @@
     opacity: 0;
     transform: translateX(45rem);
   }
+
   50% {
     opacity: 0.5;
   }
+
   80% {
     transform: translate(-2rem);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);

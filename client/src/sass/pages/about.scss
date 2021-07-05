@@ -26,14 +26,17 @@
 
       &-1 {
         cursor: default;
+
         &:hover {
           transform: skewX(-15deg);
         }
       }
+
       &-2 {
         margin-top: 5%;
         color: $hover-color;
       }
+
       &-3 {
         margin-top: 5%;
       }
@@ -42,14 +45,17 @@
     &-social {
       display: flex;
       margin-top: 10%;
+
       &-icon {
         cursor: pointer;
         -webkit-animation: pulse 0.8s ease-in-out infinite alternate;
         animation: pulse 0.8s ease-in-out infinite alternate;
       }
+
       &-1 {
         margin-left: 0.5%;
       }
+
       &-2 {
         margin-left: 10%;
       }
@@ -61,9 +67,11 @@
     flex-direction: column;
     text-align: center;
     margin-top: 10%;
+
     &-head {
       color: $hover-color;
     }
+
     &-para {
       margin: 5%;
     }
@@ -76,26 +84,27 @@
       flex-direction: column;
       margin-top: 10%;
       align-items: center;
+
       &-img {
         margin-left: 0px;
         height: 100px;
         width: 100px;
         margin-top: 5%;
       }
+
       &-txt {
         margin: 15% 0% 15% 0%;
         text-align: center;
         width: 100%;
       }
+
       &-social {
         text-align: center;
         margin: 10% 0 0 35%;
         padding: 2%;
+
         &-1 {
           margin-right: 10%;
-        }
-        &-2 {
-          //  margin-left: 10%;
         }
       }
     }
@@ -107,10 +116,12 @@
     color: $hover-color;
     transform: scale(1.5);
   }
+
   50% {
     color: whitesmoke;
     transform: scale(1.7);
   }
+
   100% {
     color: $hover-color;
     transform: scale(1.5);
@@ -122,10 +133,12 @@
     color: $hover-color;
     transform: scale(1.5);
   }
+
   50% {
     color: whitesmoke;
     transform: scale(1.7);
   }
+
   100% {
     color: $hover-color;
     transform: scale(1.5);

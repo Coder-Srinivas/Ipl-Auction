@@ -7,7 +7,6 @@ const socketio = require("socket.io");
 const http = require("http");
 const userRouter = require("./routes/user.route");
 const newsRouter = require("./routes/news.route");
-const playerRouter = require("./routes/players.route");
 const User = require("./database/models/user.model");
 require("dotenv").config();
 require("./database/connection");
@@ -37,7 +36,6 @@ app.use(express.json());
 //Routes
 app.use(userRouter);
 app.use(newsRouter);
-app.use(playerRouter);
 
 require("./routes/socket.route")(io);
 

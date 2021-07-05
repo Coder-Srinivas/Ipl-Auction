@@ -19,6 +19,7 @@ const News = () => {
       })
       .catch((error) => {
         setNews([]);
+        console.log(error.message);
         setError(true);
       });
   }, []);
