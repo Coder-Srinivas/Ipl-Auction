@@ -1,0 +1,60 @@
+@keyframes dashFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-45rem);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    transform: translate(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dashFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(45rem);
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  80% {
+    transform: translate(-2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move-up {
+  0% {
+    transform: translateY(700px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-800px);
+  }
+}

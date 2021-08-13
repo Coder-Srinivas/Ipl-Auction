@@ -1,0 +1,100 @@
+.form {
+  @include glassmorphism;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+
+  &-container {
+    @include glassmorphism;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: none;
+    max-width: 25rem;
+    height: auto;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+
+    &-icon {
+      position: absolute;
+      top: 4.9rem;
+      left: 1rem;
+      transform: scale(0.8);
+      z-index: 999;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    &-desc {
+      display: inline-block;
+      font-size: 1rem;
+      padding: 0.2rem 1rem;
+      margin: 0.5rem 0;
+    }
+
+    &-desc--2 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &-input {
+      @include glassmorphism;
+      padding: 0.2rem 0;
+      width: 100%;
+      min-height: 3rem;
+      text-decoration: none;
+      border-radius: 35px;
+      border: none;
+      outline: none;
+      padding-left: 3rem;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      color: $font-color-main;
+
+      &:focus {
+        border: 2px solid whitesmoke;
+      }
+      &-container {
+        padding: 1.5rem 0;
+        position: relative;
+      }
+    }
+
+    &-additional {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 1rem;
+
+      a {
+        text-decoration: none;
+        color: $theme-color;
+      }
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $background-color-main inset !important;
+}
+
+.error {
+  text-align: center;
+  display: block;
+  background-color: rgba(255, 0, 0, 0.1);
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  max-width: 22rem;
+}
+
+.invisible {
+  display: none;
+}

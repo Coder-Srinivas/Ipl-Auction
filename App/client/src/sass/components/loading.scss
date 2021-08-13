@@ -1,0 +1,12 @@
+.loading-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-main {
+    border-radius: 50%;
+    border: 5px solid $font-color-main;
+    border-top: 5px solid $theme-color;
+    animation: spin 0.8s linear 0s infinite both;
+  }
+}

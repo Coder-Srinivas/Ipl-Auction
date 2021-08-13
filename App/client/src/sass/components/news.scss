@@ -1,0 +1,95 @@
+.news {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  width: 100%;
+  min-height: 25rem;
+  padding: 2rem;
+
+  &-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+  }
+
+  &-image {
+    width: auto;
+    height: 100%;
+    clip-path: polygon(0% 0%, 70% 0, 100% 50%, 70% 100%, 0% 100%);
+    background-size: cover;
+    margin-right: -5rem;
+    box-shadow: 0 25px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  &-container {
+    @include glassmorphism;
+    padding: 0 1rem 0 9rem;
+    width: auto;
+    height: 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 16% 50%);
+    background-color: $background-color-tertiary;
+  }
+
+  &-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      padding: 1.5rem 0;
+    }
+
+    &-desc {
+      padding: 0 0 2rem 0;
+    }
+
+    &-date {
+      padding-bottom: 2rem;
+      div {
+        padding: 0.2rem 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .news {
+    display: grid;
+    grid-template-rows: 30% 50%;
+    grid-template-columns: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-image {
+      width: 25rem;
+      height: 25rem;
+      margin: 0;
+      padding: 0;
+      clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    }
+
+    &-container {
+      width: 25rem;
+      min-height: 35rem;
+      height: auto;
+      padding: 9rem 0 0 1rem;
+      clip-path: polygon(0% 0%, 50% 22%, 100% 0%, 100% 0, 100% 100%, 0 100%);
+      background-color: $background-color-tertiary;
+    }
+
+    &-content-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      padding: 0.5rem 0 1rem 0;
+    }
+  }
+}

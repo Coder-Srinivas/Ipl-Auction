@@ -1,0 +1,24 @@
+.error-component {
+  @include glassmorphism;
+
+  margin-top: 10rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  &-image {
+    padding: 0;
+    margin: 0;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  &-text {
+    padding: 2rem;
+  }
+}

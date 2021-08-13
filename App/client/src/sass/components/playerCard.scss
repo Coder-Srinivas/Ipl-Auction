@@ -1,0 +1,91 @@
+.playerCard {
+  padding: 0.2rem;
+  width: 21rem;
+  height: auto;
+  margin: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  @include glassmorphism;
+  border: none;
+  background-color: $background-color-tertiary;
+
+  &-image {
+    background-color: none;
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      display: block;
+      margin: 0rem 0 0 0;
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 50%;
+      height: 1.5%;
+      top: 102%;
+      left: 25.5%;
+      right: 0;
+      bottom: 0;
+      background-color: $theme-color;
+    }
+  }
+
+  &-info {
+    padding: 0.4rem;
+
+    &-role {
+      text-align: center;
+      color: $hover-color;
+      text-transform: capitalize;
+      letter-spacing: 1.5px;
+      margin: 1rem;
+    }
+
+    &-stats {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      width: 100%;
+      height: auto;
+
+      &-title {
+        letter-spacing: 1.5px;
+        padding: 0 1rem;
+        width: 100%;
+      }
+    }
+
+    &-slider {
+      width: auto;
+    }
+
+    &-stat {
+      &-container {
+        span {
+          margin-right: 0.5rem;
+        }
+        display: inline-block;
+        width: 20%;
+        height: 1rem;
+        margin: 1rem;
+      }
+
+      &-value {
+        color: $theme-color3;
+      }
+
+      &-label {
+        border-left: 2px solid $hover-color;
+        padding-left: 0.3rem;
+      }
+    }
+  }
+}
