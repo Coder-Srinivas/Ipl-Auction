@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../utilities/axiosInstance";
-const url = process.env.BACKEND_URL || "http://localhost:8000/";
+const url = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000/";
 
 const useFindUser = () => {
   const [user, setUser] = useState(null);
