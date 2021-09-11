@@ -15,6 +15,8 @@ const db = mongoose
     console.log("Connected to the mongodb database");
   }).catch((error) => {
     console.log(error.name);
+    console.log(process.env.DEV_MONGO_URL);
+    console.log(process.env.PROD_MONGO_URL);
   });
 
 module.exports = db;
