@@ -7,6 +7,7 @@ import JoinAuction from "../components/JoinAuction";
 import CreateAuction from "../components/CreateAuction";
 import Game from "../components/Game";
 import Lobby from "../components/Lobby";
+import Loader from "./Loading";
 
 import io from "socket.io-client";
 
@@ -14,7 +15,7 @@ const url = process.env.BACKEND_URL || "http://localhost:8000";
 
 const Auction = (props) => {
   const { user } = useContext(UserContext);
-  const [socket] = useState(io(url), { user });
+  const [socket] = useState(io(url, { user: "Hello" }));
   const [room, setRoom] = useState("");
   const [loading, setLoading] = useState(false);
   const [play, setPlay] = useState(false);
@@ -27,9 +28,15 @@ const Auction = (props) => {
   const [created, setCreated] = useState(false);
   const [join, setJoin] = useState(false);
   const [me, setMe] = useState("");
+  const [initial, setInitial] = useState(false);
 
   useEffect(() => {
-    console.log(socket);
+    socket.emit("check-user");
+
+    socket.on("existing-user", (data) => {
+      setInitial(false);
+    });
+
     socket.on("join-result", (message) => {
       if (message.success) {
         console.log(message);
@@ -59,7 +66,9 @@ const Auction = (props) => {
 
   return (
     <div className="auction">
-      {play ? (
+      {initial ? (
+        <Loader />
+      ) : play ? (
         <Game room={room} socket={socket} users={users} user={user} me={me} />
       ) : !created && !join ? (
         <CreateAuction

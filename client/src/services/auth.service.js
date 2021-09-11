@@ -36,4 +36,4 @@ const logout = async () => {
   });
 };
 
-module.exports = { login, register, logout };
+export { login, register, logout };

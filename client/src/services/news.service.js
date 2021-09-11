@@ -7,4 +7,4 @@ const fetchNews = async () => {
   });
 };
 
-module.exports = { fetchNews };
+export { fetchNews };

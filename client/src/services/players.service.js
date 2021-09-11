@@ -7,4 +7,4 @@ const fetchSquads = async () => {
   });
 };
 
-module.exports = { fetchSquads };
+export { fetchSquads };
