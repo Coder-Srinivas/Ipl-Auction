@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
   } catch (error) {
     const message = error.message;
     let errorMessage = "";
-
+    console.log(error.message);
     // Checking for duplicates
     if (message.includes("username")) {
       errorMessage =
