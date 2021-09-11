@@ -13,6 +13,8 @@ const db = mongoose
   })
   .then(() => {
     console.log("Connected to the mongodb database");
+  }).catch((error) => {
+    console.log(error.name);
   });
 
 module.exports = db;
