@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
+    "client-install": "npm install --prefix client",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
@@ -27,5 +30,8 @@
     "puppeteer": "^9.1.1",
     "puppeteer-autoscroll-down": "^0.1.6",
     "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
   }
 }
