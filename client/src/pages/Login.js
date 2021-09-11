@@ -5,11 +5,10 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "../components/Form";
 import { UserContext } from "../hooks/UserContext";
-
-const {
+import {
   handleEmailChange,
   handlePasswordChange,
-} = require("../utilities/handleChanges");
+} from "../utilities/handleChanges";
 
 const Login = (props) => {
   const { setUser } = useContext(UserContext);

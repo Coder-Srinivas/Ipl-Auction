@@ -6,11 +6,11 @@ import { useState, useContext } from "react";
 import Form from "../components/Form";
 
 import { UserContext } from "../hooks/UserContext";
-const {
+import {
   handleChange,
   handleEmailChange,
   handlePasswordChange,
-} = require("../utilities/handleChanges");
+} from "../utilities/handleChanges";
 
 const SignUp = (props) => {
   const { setUser } = useContext(UserContext);

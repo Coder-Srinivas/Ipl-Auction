@@ -6,7 +6,7 @@ import Error from "./Error";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const { fetchNews } = require("../services/news.service");
+import { fetchNews } from "../services/news.service";
 
 const News = () => {
   const [news, setNews] = useState(null);

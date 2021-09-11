@@ -3,8 +3,7 @@ import { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../hooks/UserContext";
 import Loader from "./Loading.component";
-
-const { logout } = require("../services/auth.service");
+import { logout } from "../services/auth.service";
 
 const Navbar = () => {
   const [barState, setBarState] = useState(false);
