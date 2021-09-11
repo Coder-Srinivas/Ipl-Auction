@@ -1,4 +1,4 @@
-const { validateEmail, validatePassword } = require("./validation");
+import { validateEmail, validatePassword } from "./validation";
 
 const handleChange = (value, setValue) => {
   setValue(value);
@@ -35,4 +35,4 @@ const handlePasswordChange = (password, setPassword, setErrors) => {
   }
 };
 
-module.exports = { handleEmailChange, handlePasswordChange, handleChange };
+export { handleEmailChange, handlePasswordChange, handleChange };
