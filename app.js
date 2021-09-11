@@ -12,12 +12,11 @@ const path = require("path");
 require("dotenv").config();
 require("./database/connection");
 
-const clientUrl = process.env.DEV_REACT_URL || "http://localhost:3000";
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     credentials: true,
   },
 });
@@ -26,7 +25,7 @@ const io = socketio(server, {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: clientUrl,
+    origin: "*",
     credentials: true,
   })
 );
