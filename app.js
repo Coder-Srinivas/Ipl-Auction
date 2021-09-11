@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
 
 require("./routes/socket.route")(io);
 
-server.listen(8000, () => {
+server.listen(process.env.PORT || 8000, () => {
   //User.collection.deleteMany({});
   console.log("Listening on port 8000");
 });
