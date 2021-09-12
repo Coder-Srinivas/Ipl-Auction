@@ -69,7 +69,34 @@ const next = (io, data) => {
   auction.next(squads);
 };
 
-const checkUser = (io, data) => {};
+const checkUser = (socket, user) => {
+  let toBeFound;
+  let room;
+
+  for (let [key, value] of liveAuctions) {
+    const find = value.findUser(user.username)
+    if(value.findUser(user.username)){
+      if(find){
+        toBeFound = find;
+        room = key;
+        break;
+      }
+    }
+  }
+
+  if(toBeFound){
+    socket.join(room);
+    socket.emit("existing-user", {
+      room: room,
+      users: liveAuctions.get(room).fetchPlayers(),
+      initial: liveAuctions.get(room).getCurrentPlayer()
+    })
+  }else{
+    socket.emit("no-existing-user");
+  }
+
+};
+
 module.exports = {
   create,
   join,
@@ -77,4 +104,5 @@ module.exports = {
   play,
   bid,
   next,
+  checkUser
 };

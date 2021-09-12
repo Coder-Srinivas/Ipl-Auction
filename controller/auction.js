@@ -41,7 +41,7 @@ class Auction {
 
   findUser(user) {
     const currentUser = this.users.find((u) => {
-      return u.user == user;
+      return u.user === user;
     });
     return currentUser;
   }
@@ -54,12 +54,15 @@ class Auction {
     });
   }
 
+  getCurrentPlayer(){
+    return this.currentPlayer;
+  }
+
   getCurrentBid() {
     const bidder = {
       bidder: this.currentBidder,
       bid: this.currentBid,
     };
-
     return bidder;
   }
 
@@ -151,6 +154,10 @@ class Auction {
     this.room.emit("users", {
       users: this.users,
     });
+  }
+
+  fetchPlayers(){
+    return this.users;
   }
 }
 

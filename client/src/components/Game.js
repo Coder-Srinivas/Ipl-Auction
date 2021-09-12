@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
 
-const Game = ({ users, socket, room, user, me }) => {
-  const [timer, setTimer] = useState(10);
+const Game = ({ users, socket, room, user, me, initial }) => {
+  const [timer, setTimer] = useState(0);
   const [bidder, setBidder] = useState("");
   const [amount, setAmount] = useState(0);
   const [error, setError] = useState(0);
-  const [player, setPlayer] = useState("");
+  const [player, setPlayer] = useState(initial);
   const [displayNext, setNext] = useState(false);
 
   useEffect(() => {

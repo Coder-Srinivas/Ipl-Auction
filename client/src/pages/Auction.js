@@ -17,7 +17,7 @@ const url = process.env.NODE_ENV === "production"?
 
 const Auction = (props) => {
   const { user } = useContext(UserContext);
-  const [socket] = useState(io(url, { user: "Hello" }));
+  const [socket] = useState(io(url));
   const [room, setRoom] = useState("");
   const [loading, setLoading] = useState(false);
   const [play, setPlay] = useState(false);
@@ -30,14 +30,27 @@ const Auction = (props) => {
   const [created, setCreated] = useState(false);
   const [join, setJoin] = useState(false);
   const [me, setMe] = useState("");
-  const [initial, setInitial] = useState(false);
+  const [initial, setInitial] = useState(true);
+  const [defaultPlayer, setDefaultPlayer] = useState('');
 
   useEffect(() => {
-    socket.emit("check-user");
+    socket.emit("check-user", {
+      user: user
+    });
 
     socket.on("existing-user", (data) => {
+      setUsers(data.users);
+      setRoom(data.room);
+      const myself = data.users.find((u) => u.user === user.username);
+      setMe(myself);
       setInitial(false);
+      setDefaultPlayer(data.initial);
+      setPlay(true);
     });
+
+    socket.on("no-existing-user", () => {
+      setInitial(false);
+    })
 
     socket.on("join-result", (message) => {
       if (message.success) {
@@ -55,14 +68,13 @@ const Auction = (props) => {
       console.log("Started");
       setPlay(true);
     });
-  }, [socket]);
+  }, [socket, user]);
 
   useEffect(() => {
     socket.on("users", (data) => {
       setUsers(data.users);
       const myself = data.users.find((u) => u.user === user.username);
       setMe(myself);
-      console.log(user.username, data.users);
     });
   }, [user, socket]);
 
@@ -71,7 +83,7 @@ const Auction = (props) => {
       {initial ? (
         <Loader />
       ) : play ? (
-        <Game room={room} socket={socket} users={users} user={user} me={me} />
+        <Game room={room} socket={socket} users={users} user={user} me={me} initial={defaultPlayer} />
       ) : !created && !join ? (
         <CreateAuction
           socket={socket}
