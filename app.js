@@ -14,10 +14,11 @@ require("./database/connection");
 
 const app = express();
 const server = http.createServer(app);
+
 const io = socketio(server, {
   cors: {
-    origin: "*",
-    credentials: true,
+    origin: "http://localhost:3000",
+    credentials: true
   },
 });
 
@@ -25,8 +26,8 @@ const io = socketio(server, {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "*",
-    credentials: true,
+    origin: "http://localhost:3000",
+    credentials: true
   })
 );
 
