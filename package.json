@@ -1,6 +1,6 @@
 {
   "name": "ipl-auction",
-  "homepage":"https://ipl-mega-auction.herokuapp.com/",
+  "homepage": "https://ipl-mega-auction.herokuapp.com/",
   "version": "1.0.0",
   "description": "An Ipl auction application",
   "main": "index.js",
