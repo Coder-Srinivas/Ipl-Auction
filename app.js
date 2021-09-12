@@ -7,7 +7,7 @@ const socketio = require("socket.io");
 const http = require("http");
 const userRouter = require("./routes/user.route");
 const newsRouter = require("./routes/news.route");
-const User = require("./database/models/user.model");
+// const User = require("./database/models/user.model");
 const path = require("path");
 require("dotenv").config();
 require("./database/connection");
@@ -29,6 +29,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());

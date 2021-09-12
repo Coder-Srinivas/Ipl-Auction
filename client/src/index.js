@@ -8,6 +8,9 @@ require("dotenv").config();
 
 ReactDOM.render(
   <BrowserRouter>
+    <meta http-equiv="Content-Security-Policy" content="default-src *;
+    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+    style-src  'self' 'unsafe-inline' *"/>
     <App />
   </BrowserRouter>,
   document.getElementById("root")
