@@ -1,18 +1,23 @@
 .lobby {
   @include glassmorphism;
+
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+
   &--container {
     margin: auto;
     padding: 0.2rem;
     width: 45rem;
     height: auto;
+
     @include glassmorphism;
+
     border: none;
     background-color: $background-color-tertiary;
+
     &--content {
       padding: 0.2rem;
       text-align: center;
@@ -20,19 +25,22 @@
       margin: 1rem;
       display: flex;
       flex-direction: column;
-      &-1{
-          &-copy{
-              a{
-                  cursor: pointer;
-                  color: $theme-color;
+
+      &-1 {
+              &-copy {
+                  a {
+                    cursor: pointer;
+                    color: $theme-color;
+                  }
               }
-          }
       }
+
       &-2 {
         margin-top: 1rem;
         color: $hover-color;
       }
     }
+
     &--button {
       display: flex;
       align-items: center;
