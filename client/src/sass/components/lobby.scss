@@ -27,12 +27,12 @@
       flex-direction: column;
 
       &-1 {
-              &-copy {
-                  a {
-                    cursor: pointer;
-                    color: $theme-color;
-                  }
-              }
+        &-copy {
+          a {
+            cursor: pointer;
+            color: $theme-color;
+          }
+        }
       }
 
       &-2 {
