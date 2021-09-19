@@ -116,17 +116,17 @@ const Game = ({ users, socket, room, user, me, initial }) => {
             Bid
           </button>
           {displayNext ? (
-        <button
-          onClick={() => {
-            next();
-          }}
-          className="button game--btn-2"
-        >
-          Next
-        </button>
-      ) : (
-        ""
-      )}
+            <button
+              onClick={() => {
+                next();
+              }}
+              className="button game--btn-2"
+            >
+              Next
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="game--status">
