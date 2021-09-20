@@ -45,7 +45,11 @@ const Auction = (props) => {
       setMe(myself);
       setInitial(false);
       setDefaultPlayer(data.initial);
-      setPlay(true);
+      if(users.length >= 2){
+        setPlay(true);
+      }else{
+        setCreated(true);
+      }
     });
 
     socket.on("no-existing-user", () => {
@@ -68,7 +72,7 @@ const Auction = (props) => {
       console.log("Started");
       setPlay(true);
     });
-  }, [socket, user]);
+  }, [socket, user, users]);
 
   useEffect(() => {
     socket.on("users", (data) => {
