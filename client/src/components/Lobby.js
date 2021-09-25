@@ -12,7 +12,7 @@ const Lobby = ({ socket, code, setErrors, error, users, main }) => {
     if (users.length < 2) {
       return setErrors((prev) => ({
         ...prev,
-        lobby: "At least four users should join for the auction to start.",
+        lobby: "At least two users should join for the auction to start.",
       }));
     }
     socket.emit("requestPlay", {
