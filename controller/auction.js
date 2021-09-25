@@ -136,6 +136,10 @@ class Auction {
     if (!this.dupUser(user)) this.users.push(new User(user));
   }
 
+  removeUser(user) {
+    this.users = this.users.filter((u) => user !== u.user);
+  }
+
   dupUser(user) {
     const dup = this.users.filter((u) => user === u.user);
     if (dup.length === 0) {
@@ -158,7 +162,7 @@ class Auction {
 
   addPlayer(player, amount) {
     const currentUser = this.findUser(this.currentBidder);
-    currentUser.addPlayer(player, amount);
+    currentUser.addPlayer(player);
     currentUser.deduct(amount);
     this.confirm = 0;
     this.room.emit("users", {

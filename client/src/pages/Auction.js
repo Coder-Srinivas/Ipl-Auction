@@ -42,7 +42,6 @@ const Auction = (props) => {
   useEffect(() => {
 
     socket.on("existing-user", (data) => {
-      console.log(data);
       setUsers(data.users);
       setRoom(data.room);
       setInitial(false);
@@ -51,6 +50,7 @@ const Auction = (props) => {
         setPlay(true);
       }else{
         setCreated(true);
+        setMain(data.starter);
       }
     });
 
@@ -112,6 +112,9 @@ const Auction = (props) => {
           setErrors={setErrors}
           main={main}
           error={errors.lobby}
+          user={user}
+          setCreated={setCreated}
+          setJoin={setJoin}
         />
       ) : (
         <JoinAuction

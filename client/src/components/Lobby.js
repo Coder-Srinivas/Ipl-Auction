@@ -1,13 +1,13 @@
-const Lobby = ({ socket, code, setErrors, error, users, main }) => {
+const Lobby = ({ socket, code, setErrors, error, users, main, user, setCreated, setJoin }) => {
 
-    const copyToClipboard = () => {
-      if ('clipboard' in navigator)
-      navigator.clipboard.writeText(code);
-      else
-      document.execCommand('copy', true, code);
-        alert("Code successfully copied to the clipboard!");
-    }
-    
+  const copyToClipboard = () => {
+    if ('clipboard' in navigator)
+    navigator.clipboard.writeText(code);
+    else
+    document.execCommand('copy', true, code);
+      alert("Code successfully copied to the clipboard!");
+  }
+  
   const start = () => {
     if (users.length < 2) {
       return setErrors((prev) => ({
@@ -22,6 +22,16 @@ const Lobby = ({ socket, code, setErrors, error, users, main }) => {
       room: code,
     });
   };
+
+  const exit = () => {
+    socket.emit("exit", {
+      room: code,
+      user: user.username
+    })
+    setCreated(false);
+    setJoin(false);
+  }
+
   return (
     <>
     <div className="lobby">
@@ -47,6 +57,12 @@ const Lobby = ({ socket, code, setErrors, error, users, main }) => {
             >
               Start
             </button>: ""}
+            <button style={{marginTop: "1rem"}} className="button"
+              onClick={() => {
+                exit();
+              }}>
+                Exit
+                </button>
             {error ? <div className="error">{error}</div> : ""}
         </div>
       </div>

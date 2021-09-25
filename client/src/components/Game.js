@@ -3,7 +3,7 @@ import PlayerCard from "./PlayerCard";
 import UserAccordian from "./UserAccordian";
 
 const Game = ({ users, socket, room, user, initial }) => {
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(-1);
   const [bidder, setBidder] = useState("");
   const [amount, setAmount] = useState(0);
   const [error, setError] = useState(0);
@@ -42,6 +42,8 @@ const Game = ({ users, socket, room, user, initial }) => {
       setBidder("");
       setAmount(0);
       setNext(true);
+    }else{
+      setNext(false);
     }
   }, [timer]);
 
@@ -67,7 +69,7 @@ const Game = ({ users, socket, room, user, initial }) => {
       <div className="game-main">
         {player ? <PlayerCard {...player} /> : ""}
         <div className="game-main-content">
-          <div className={`game-timer ${timer !== 0? "animate-timer" : ""} 
+          <div className={`game-timer ${timer > 0? "animate-timer" : ""} 
           ${timer < 7 && timer >= 4? "timer-yellow" : timer < 4? "timer-red" : ""}`}>{timer}</div>
           <div className="game-info">
             <div className="game-info-bidder">

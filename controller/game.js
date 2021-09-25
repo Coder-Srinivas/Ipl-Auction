@@ -100,10 +100,22 @@ const checkUser = (socket, user) => {
 };
 
 const serverUsers = (io, room) => {
-  const auction = liveAuctions.get(data.room);
+  const auction = liveAuctions.get(room);
+  if(!auction){
+    return;
+  }
   io.to(room).emit("users", {
     users: auction.users,
   });
+}
+
+const exitUser = (io, data) => {
+  const auction = liveAuctions.get(data.room);
+  auction.removeUser(data.user);
+  if(auction.users.length === 0){
+    liveAuctions.delete(data.room);
+  }
+  serverUsers(io, data.room);
 }
 
 module.exports = {
@@ -114,5 +126,6 @@ module.exports = {
   bid,
   next,
   checkUser,
-  serverUsers
+  serverUsers,
+  exitUser
 };

@@ -1,4 +1,4 @@
-const { create, join, start, play, bid, next, checkUser, serverUsers } = require("../controller/game");
+const { create, join, start, play, bid, next, checkUser, serverUsers, exitUser } = require("../controller/game");
 
 const socketRouter = (io) => {
   io.on("connection", (socket) => {
@@ -34,6 +34,11 @@ const socketRouter = (io) => {
     socket.on("server-users", ({room}) => {
       serverUsers(io, room)
     })
+
+    socket.on("exit", (data) => {
+      exitUser(io, data);
+    })
+
   });
 };
 

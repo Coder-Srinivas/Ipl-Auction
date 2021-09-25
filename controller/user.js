@@ -21,13 +21,12 @@ class User {
     return this.budget;
   }
 
-  addPlayer(player, amount) {
-    this.deduct(amount);
+  addPlayer(player) {
     if(player.stats){
       const role = player.stats.role.toLowerCase();
       if(role.includes("wicket")){
         this.wicketKeepers.push(player);
-      }else if(role.includes(all)){
+      }else if(role.includes("all")){
         this.allRounders.push(player);
       }else if(role.includes("bat")){
         this.batsmen.push(player);
