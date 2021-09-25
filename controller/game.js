@@ -54,6 +54,7 @@ const start = (io, data) => {
 
 const play = (data) => {
   const auction = liveAuctions.get(data.room);
+  auction.startAuction();
   auction.servePlayer(squads);
   auction.startInterval();
 };
@@ -89,13 +90,21 @@ const checkUser = (socket, user) => {
     socket.emit("existing-user", {
       room: room,
       users: liveAuctions.get(room).fetchPlayers(),
-      initial: liveAuctions.get(room).getCurrentPlayer()
+      initial: liveAuctions.get(room).getCurrentPlayer(),
+      started: liveAuctions.get(room).getStatus()
     })
   }else{
     socket.emit("no-existing-user");
   }
 
 };
+
+const serverUsers = (io, room) => {
+  const auction = liveAuctions.get(data.room);
+  io.to(room).emit("users", {
+    users: auction.users,
+  });
+}
 
 module.exports = {
   create,
@@ -104,5 +113,6 @@ module.exports = {
   play,
   bid,
   next,
-  checkUser
+  checkUser,
+  serverUsers
 };

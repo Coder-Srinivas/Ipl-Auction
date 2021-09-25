@@ -12,23 +12,32 @@ class Auction {
     this.squad = 0;
     this.player = 0;
     this.confirm = 0;
+    this.started = false;
+  }
+
+  startAuction(){
+    this.started = true;
+  }
+
+  getStatus(){
+    return this.started;
   }
 
   bid(socket, bidder) {
-    if (this.currentBidder == bidder) {
+    if (this.currentBidder === bidder) {
       return;
     }
     const user = this.findUser(bidder);
 
     if (this.currentBid >= 5) {
-      if (user.budget < this.currentBid + 1) {
+      if (user.budget <= this.currentBid + 1) {
         return socket.emit("bid-error", {
           message: "The current bid exceeds your budget.",
         });
       }
       this.currentBid += 1;
     } else {
-      if (user.budget < this.currentBid + 0.5) {
+      if (user.budget <= this.currentBid + 0.5) {
         return socket.emit("bid-error", {
           message: "The current bid exceeds your budget.",
         });
@@ -80,6 +89,7 @@ class Auction {
 
   resetTimer() {
     this.timer = 10;
+    this.confirm = 0;
   }
 
   clearTimer() {

@@ -1,0 +1,67 @@
+.user-accordian {
+    transition: all .5s ease-in-out;
+    padding: 0 1rem;
+    height: 1.7rem;
+    @include glassmorphism;
+    background-color: $background-color-tertiary;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: .4rem;   
+
+    &-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: .5rem;
+    }
+
+    &-players {
+        transform: scaleY(0);
+        transition: all .5s ease-in-out;  
+        transform-origin: top;
+        border: none;
+    }
+
+    .arrow {
+        width: 1.5rem;
+        transform: rotate(-90deg);
+        margin-bottom: -.1rem;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+    }
+
+    .rotate {
+        transform: rotate(90deg);
+    }
+}
+
+.user-accordian-increase {
+    transform: scaleY(1);
+}
+
+.user-accordian-increase-2 {
+    height: auto;
+}
+
+.accordian-helper {
+
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $hover-color;
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    &-players {
+
+    }
+
+    &-player {
+
+    }
+}

@@ -7,6 +7,7 @@ class User {
     this.allRounders = [];
     this.wicketKeepers = [];
     this.players = [];
+    this.unknown = [];
   }
 
   deduct(amount) {
@@ -20,21 +21,23 @@ class User {
     return this.budget;
   }
 
-  addPlayer(p, amount) {
-    const player = {
-      player: p,
-      amount,
-    };
-    switch (player.type) {
-      case "Batsman":
-        this.batsman.push(player);
-      case "Bowler":
-        this.bowlers.push(player);
-      case "AllRounder":
-        this.allRounders.push(player);
-      case "WicketKeeper":
+  addPlayer(player, amount) {
+    this.deduct(amount);
+    if(player.stats){
+      const role = player.stats.role.toLowerCase();
+      if(role.includes("wicket")){
         this.wicketKeepers.push(player);
+      }else if(role.includes(all)){
+        this.allRounders.push(player);
+      }else if(role.includes("bat")){
+        this.batsmen.push(player);
+      }else if(role.includes("bowl")){
+        this.bowlers.push(player);
+      }
+    }else{
+      this.unknown.push(player);
     }
+
     this.players.push(player);
   }
 

@@ -21,6 +21,7 @@ const Auction = (props) => {
   const [room, setRoom] = useState("");
   const [loading, setLoading] = useState(false);
   const [play, setPlay] = useState(false);
+  const [main, setMain] = useState(false);
   const [errors, setErrors] = useState({
     form: "",
     room: "",
@@ -29,7 +30,6 @@ const Auction = (props) => {
   const [users, setUsers] = useState([]);
   const [created, setCreated] = useState(false);
   const [join, setJoin] = useState(false);
-  const [me, setMe] = useState("");
   const [initial, setInitial] = useState(true);
   const [defaultPlayer, setDefaultPlayer] = useState('');
 
@@ -37,15 +37,17 @@ const Auction = (props) => {
     socket.emit("check-user", {
       user: user
     });
+  }, [socket, user])
+
+  useEffect(() => {
 
     socket.on("existing-user", (data) => {
+      console.log(data);
       setUsers(data.users);
       setRoom(data.room);
-      const myself = data.users.find((u) => u.user === user.username);
-      setMe(myself);
       setInitial(false);
       setDefaultPlayer(data.initial);
-      if(users.length >= 2){
+      if(data.started){
         setPlay(true);
       }else{
         setCreated(true);
@@ -57,6 +59,7 @@ const Auction = (props) => {
     })
 
     socket.on("join-result", (message) => {
+      console.log(message);
       if (message.success) {
         console.log(message);
         setRoom(message.room);
@@ -69,7 +72,6 @@ const Auction = (props) => {
     });
 
     socket.on("start", () => {
-      console.log("Started");
       setPlay(true);
     });
   }, [socket, user, users]);
@@ -77,8 +79,6 @@ const Auction = (props) => {
   useEffect(() => {
     socket.on("users", (data) => {
       setUsers(data.users);
-      const myself = data.users.find((u) => u.user === user.username);
-      setMe(myself);
     });
   }, [user, socket]);
 
@@ -87,7 +87,13 @@ const Auction = (props) => {
       {initial ? (
         <Loader />
       ) : play ? (
-        <Game room={room} socket={socket} users={users} user={user} me={me} initial={defaultPlayer} />
+        <Game
+          room={room} 
+          socket={socket}
+          users={users} 
+          user={user} 
+          initial={defaultPlayer} 
+        />
       ) : !created && !join ? (
         <CreateAuction
           socket={socket}
@@ -95,14 +101,16 @@ const Auction = (props) => {
           setCreated={setCreated}
           setJoin={setJoin}
           setRoom={setRoom}
+          setMain={setMain}
         />
       ) : created ? (
         <Lobby
           socket={socket}
-          userCount={users.length}
+          users={users}
           code={room}
           setPlay={setPlay}
           setErrors={setErrors}
+          main={main}
           error={errors.lobby}
         />
       ) : (

@@ -1,16 +1,15 @@
-const Lobby = ({ socket, userCount, code, setPlay, setErrors, error, userNames }) => {
-  userNames = "Sample name1, Sample name2" //dummy value
-   
+const Lobby = ({ socket, code, setErrors, error, users, main }) => {
+
     const copyToClipboard = () => {
       if ('clipboard' in navigator)
       navigator.clipboard.writeText(code);
       else
       document.execCommand('copy', true, code);
-       alert("Code successfully copied to the clipboard!");
+        alert("Code successfully copied to the clipboard!");
     }
     
   const start = () => {
-    if (userCount < 2) {
+    if (users.length < 2) {
       return setErrors((prev) => ({
         ...prev,
         lobby: "At least four users should join for the auction to start.",
@@ -30,20 +29,24 @@ const Lobby = ({ socket, userCount, code, setPlay, setErrors, error, userNames }
         <div className="lobby--container--content">
           <div className="lobby--container--content-1">
             Share the code <span className="lobby--container--content-1-copy">
-            <a onClick={copyToClipboard}>{code}</a>
+            <p className="code" onClick={copyToClipboard}>{code}</p>
             </span> with your friends to join the auction.
           </div>
-          <div className="lobby--container--content-2">Users joined: {userNames}</div>
+          <div className="lobby--container--content-2">Users joined: {
+            users.map((user) => {
+              return <div key={user.user}>{user.user}</div>
+            })
+          }</div>
           </div>
           <div className="lobby--container--button">
-            <button
+            {main? <button
               className="button"
               onClick={() => {
                 start();
               }}
             >
               Start
-            </button>
+            </button>: ""}
             {error ? <div className="error">{error}</div> : ""}
         </div>
       </div>
