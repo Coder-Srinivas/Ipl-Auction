@@ -14,6 +14,7 @@ const db = mongoose
   })
   .catch((error) => {
     console.log(error.name);
+    console.log(error);
     console.log(process.env.DEV_MONGO_URL);
     console.log(process.env.PROD_MONGO_URL);
   });
