@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
     origin: "http://localhost:3000",
-    credentials: true
+    credentials: true,
   },
 });
 
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:3000",
-    credentials: true
+    credentials: true,
   })
 );
 

@@ -31,7 +31,7 @@ const UserSchema = new Schema(
         },
       },
     ],
-    auctions: []
+    auctions: [],
   },
   {
     timestamps: true,

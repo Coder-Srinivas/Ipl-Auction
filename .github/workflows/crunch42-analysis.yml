@@ -21,12 +21,12 @@ name: "42Crunch REST API Static Security Testing"
 # follow standard Code Scanning triggers
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ master ]
+    branches: [master]
   schedule:
-    - cron: '27 14 * * 3'
+    - cron: "27 14 * * 3"
 
 jobs:
   rest-api-static-security-testing:

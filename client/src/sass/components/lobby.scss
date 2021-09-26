@@ -6,14 +6,13 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  
 
   &--container {
     margin: auto;
-    padding: 1rem .2rem;
+    padding: 1rem 0.2rem;
     width: 45rem;
     height: auto;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     @include glassmorphism;
     border: none;
     background-color: $background-color-tertiary;

@@ -22,18 +22,18 @@ class User {
   }
 
   addPlayer(player) {
-    if(player.stats){
+    if (player.stats) {
       const role = player.stats.role.toLowerCase();
-      if(role.includes("wicket")){
+      if (role.includes("wicket")) {
         this.wicketKeepers.push(player);
-      }else if(role.includes("all")){
+      } else if (role.includes("all")) {
         this.allRounders.push(player);
-      }else if(role.includes("bat")){
+      } else if (role.includes("bat")) {
         this.batsmen.push(player);
-      }else if(role.includes("bowl")){
+      } else if (role.includes("bowl")) {
         this.bowlers.push(player);
       }
-    }else{
+    } else {
       this.unknown.push(player);
     }
 

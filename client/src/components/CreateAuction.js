@@ -1,6 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 
-const CreateAuction = ({ socket, user, setCreated, setJoin, setRoom, setMain }) => {
+const CreateAuction = ({
+  socket,
+  user,
+  setCreated,
+  setJoin,
+  setRoom,
+  setMain,
+}) => {
   const newAuction = () => {
     const room = uuidv4();
     socket.emit("createAuction", {

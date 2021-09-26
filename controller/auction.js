@@ -16,11 +16,11 @@ class Auction {
     this.started = false;
   }
 
-  startAuction(){
+  startAuction() {
     this.started = true;
   }
 
-  getStatus(){
+  getStatus() {
     return this.started;
   }
 
@@ -64,7 +64,7 @@ class Auction {
     });
   }
 
-  getCurrentPlayer(){
+  getCurrentPlayer() {
     return this.currentPlayer;
   }
 
@@ -129,12 +129,16 @@ class Auction {
         const auction = this;
         this.room.emit("game-over");
         this.users.forEach((u) => {
-          dbUser.findOneAndUpdate({username: u.user}, { $push: { auctions: {auction: auction.users} } }, (error, success) => {
-            if(error){
-              console.log(error);
+          dbUser.findOneAndUpdate(
+            { username: u.user },
+            { $push: { auctions: { auction: auction.users } } },
+            (error, success) => {
+              if (error) {
+                console.log(error);
+              }
             }
-          })
-        })
+          );
+        });
         liveAuctions.delete(room);
         return true;
       }
@@ -180,7 +184,7 @@ class Auction {
     });
   }
 
-  fetchPlayers(){
+  fetchPlayers() {
     return this.users;
   }
 }

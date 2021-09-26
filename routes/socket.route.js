@@ -1,11 +1,20 @@
-const { create, join, start, play, bid, next, checkUser, serverUsers, exitUser } = require("../controller/game");
+const {
+  create,
+  join,
+  start,
+  play,
+  bid,
+  next,
+  checkUser,
+  serverUsers,
+  exitUser,
+} = require("../controller/game");
 
 const socketRouter = (io) => {
   io.on("connection", (socket) => {
-    
-    socket.on("check-user", ({user}) => {
+    socket.on("check-user", ({ user }) => {
       checkUser(socket, user);
-    })
+    });
 
     socket.on("createAuction", (data) => {
       create(io, socket, data);
@@ -31,14 +40,13 @@ const socketRouter = (io) => {
       next(io, data);
     });
 
-    socket.on("server-users", ({room}) => {
-      serverUsers(io, room)
-    })
+    socket.on("server-users", ({ room }) => {
+      serverUsers(io, room);
+    });
 
     socket.on("exit", (data) => {
       exitUser(io, data);
-    })
-
+    });
   });
 };
 

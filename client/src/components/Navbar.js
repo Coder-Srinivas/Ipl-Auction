@@ -21,7 +21,11 @@ const Navbar = () => {
   };
   return (
     <header className="nav-container">
-      <img className="nav-container-logo" src="/Images/logo.png" alt="Logo"></img>
+      <img
+        className="nav-container-logo"
+        src="/Images/logo.png"
+        alt="Logo"
+      ></img>
       <nav
         className={
           barState

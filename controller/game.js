@@ -75,9 +75,9 @@ const checkUser = (socket, user) => {
   let room;
 
   for (let [key, value] of liveAuctions) {
-    const find = value.findUser(user.username)
-    if(value.findUser(user.username)){
-      if(find){
+    const find = value.findUser(user.username);
+    if (value.findUser(user.username)) {
+      if (find) {
         toBeFound = find;
         room = key;
         break;
@@ -85,38 +85,37 @@ const checkUser = (socket, user) => {
     }
   }
 
-  if(toBeFound){
+  if (toBeFound) {
     socket.join(room);
     socket.emit("existing-user", {
       room: room,
       users: liveAuctions.get(room).fetchPlayers(),
       initial: liveAuctions.get(room).getCurrentPlayer(),
-      started: liveAuctions.get(room).getStatus()
-    })
-  }else{
+      started: liveAuctions.get(room).getStatus(),
+    });
+  } else {
     socket.emit("no-existing-user");
   }
-
 };
 
 const serverUsers = (io, room) => {
   const auction = liveAuctions.get(room);
-  if(!auction){
+  if (!auction) {
     return;
   }
   io.to(room).emit("users", {
     users: auction.users,
   });
-}
+};
 
 const exitUser = (io, data) => {
   const auction = liveAuctions.get(data.room);
   auction.removeUser(data.user);
-  if(auction.users.length === 0){
+  if (auction.users.length === 0) {
     liveAuctions.delete(data.room);
   }
   serverUsers(io, data.room);
-}
+};
 
 module.exports = {
   create,
@@ -127,5 +126,5 @@ module.exports = {
   next,
   checkUser,
   serverUsers,
-  exitUser
+  exitUser,
 };

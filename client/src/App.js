@@ -34,7 +34,11 @@ function App() {
           <PublicRoute exact path="/signup" component={SignUp} />
           <Route exact path="/about" render={(props) => <About {...props} />} />
           <PrivateRoute exact path="/auction" component={Auction} />
-          <PrivateRoute exact path="/auctions/played" component={PreviousAuctions} />
+          <PrivateRoute
+            exact
+            path="/auctions/played"
+            component={PreviousAuctions}
+          />
         </Switch>
       </div>
     </UserContext.Provider>

@@ -11,9 +11,10 @@ import Loader from "./Loading";
 
 import io from "socket.io-client";
 
-const url = process.env.NODE_ENV === "production"? 
-"https://ipl-mega-auction.herokuapp.com/" 
-: "http://localhost:8000/";
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://ipl-mega-auction.herokuapp.com/"
+    : "http://localhost:8000/";
 
 const Auction = (props) => {
   const { user } = useContext(UserContext);
@@ -31,24 +32,23 @@ const Auction = (props) => {
   const [created, setCreated] = useState(false);
   const [join, setJoin] = useState(false);
   const [initial, setInitial] = useState(true);
-  const [defaultPlayer, setDefaultPlayer] = useState('');
+  const [defaultPlayer, setDefaultPlayer] = useState("");
 
   useEffect(() => {
     socket.emit("check-user", {
-      user: user
+      user: user,
     });
-  }, [socket, user])
+  }, [socket, user]);
 
   useEffect(() => {
-
     socket.on("existing-user", (data) => {
       setUsers(data.users);
       setRoom(data.room);
       setInitial(false);
       setDefaultPlayer(data.initial);
-      if(data.started){
+      if (data.started) {
         setPlay(true);
-      }else{
+      } else {
         setCreated(true);
         setMain(data.starter);
       }
@@ -56,7 +56,7 @@ const Auction = (props) => {
 
     socket.on("no-existing-user", () => {
       setInitial(false);
-    })
+    });
 
     socket.on("join-result", (message) => {
       console.log(message);
@@ -88,11 +88,11 @@ const Auction = (props) => {
         <Loader />
       ) : play ? (
         <Game
-          room={room} 
+          room={room}
           socket={socket}
-          users={users} 
-          user={user} 
-          initial={defaultPlayer} 
+          users={users}
+          user={user}
+          initial={defaultPlayer}
         />
       ) : !created && !join ? (
         <CreateAuction
