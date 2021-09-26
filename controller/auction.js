@@ -122,7 +122,7 @@ class Auction {
 
   gameOver(squads, liveAuctions, room) {
     this.player++;
-    if (squads[this.squad].players.length == this.player) {
+    if (squads[this.squad].players.length === this.player) {
       this.player = 0;
       this.squad++;
       if (squads.length === this.squad) {

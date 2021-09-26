@@ -22,7 +22,7 @@ class User {
   }
 
   addPlayer(player) {
-    if (player.stats) {
+    if (player.stats.role) {
       const role = player.stats.role.toLowerCase();
       if (role.includes("wicket")) {
         this.wicketKeepers.push(player);
