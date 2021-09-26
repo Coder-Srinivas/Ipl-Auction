@@ -17,6 +17,7 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
+
     email: {
       type: String,
       required: true,
@@ -30,6 +31,7 @@ const UserSchema = new Schema(
         },
       },
     ],
+    auctions: []
   },
   {
     timestamps: true,

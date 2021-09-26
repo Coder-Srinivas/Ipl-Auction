@@ -1,4 +1,5 @@
 const User = require("./user");
+const dbUser = require("../database/models/user.model");
 
 class Auction {
   constructor(room) {
@@ -119,13 +120,22 @@ class Auction {
     this.timer--;
   }
 
-  gameOver(squads) {
+  gameOver(squads, liveAuctions, room) {
     this.player++;
     if (squads[this.squad].players.length == this.player) {
       this.player = 0;
       this.squad++;
-      if (squads.length == this.squad) {
+      if (squads.length === this.squad) {
+        const auction = this;
         this.room.emit("game-over");
+        this.users.forEach((u) => {
+          dbUser.findOneAndUpdate({username: u.user}, { $push: { auctions: {auction: auction.users} } }, (error, success) => {
+            if(error){
+              console.log(error);
+            }
+          })
+        })
+        liveAuctions.delete(room);
         return true;
       }
     }
@@ -148,10 +158,10 @@ class Auction {
     return true;
   }
 
-  next(squads) {
+  next(squads, liveAuctions, room) {
     this.confirm++;
     if (this.confirm >= this.users.length) {
-      if (!this.gameOver(squads)) {
+      if (!this.gameOver(squads, liveAuctions, room)) {
         this.resetTimer();
         this.resetBid();
         this.startInterval();

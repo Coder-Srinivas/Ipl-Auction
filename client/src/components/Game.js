@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import UserAccordian from "./UserAccordian";
-
+import {useHistory} from "react-router-dom";
 const Game = ({ users, socket, room, user, initial }) => {
   const [timer, setTimer] = useState(-1);
   const [bidder, setBidder] = useState("");
@@ -9,6 +9,7 @@ const Game = ({ users, socket, room, user, initial }) => {
   const [error, setError] = useState(0);
   const [player, setPlayer] = useState(initial);
   const [displayNext, setNext] = useState(false);
+  let history = useHistory();
 
   useEffect(() => {
     socket.emit("fetch-details");
@@ -35,7 +36,11 @@ const Game = ({ users, socket, room, user, initial }) => {
     socket.on("player", (data) => {
       setPlayer(data.player);
     });
-  }, [socket]);
+
+    socket.on("game-over", () => {
+      history.push("/auctions/played");
+    })
+  }, [socket, history]);
 
   useEffect(() => {
     if (timer === 0) {

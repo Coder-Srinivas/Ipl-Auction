@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Auction from "./pages/Auction";
 import About from "./pages/About";
+import PreviousAuctions from "./pages/PreviousAuctions";
 
 // Custom Hooks
 import { UserContext } from "./hooks/UserContext";
@@ -33,6 +34,7 @@ function App() {
           <PublicRoute exact path="/signup" component={SignUp} />
           <Route exact path="/about" render={(props) => <About {...props} />} />
           <PrivateRoute exact path="/auction" component={Auction} />
+          <PrivateRoute exact path="/auctions/played" component={PreviousAuctions} />
         </Switch>
       </div>
     </UserContext.Provider>

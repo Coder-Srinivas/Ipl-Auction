@@ -7,6 +7,7 @@ const socketio = require("socket.io");
 const http = require("http");
 const userRouter = require("./routes/user.route");
 const newsRouter = require("./routes/news.route");
+const auctionRouter = require("./routes/auction.route");
 // const User = require("./database/models/user.model");
 const path = require("path");
 require("dotenv").config();
@@ -38,6 +39,7 @@ app.use(express.json());
 //Routes
 app.use(userRouter);
 app.use(newsRouter);
+app.use(auctionRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

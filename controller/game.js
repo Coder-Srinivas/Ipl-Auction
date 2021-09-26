@@ -67,7 +67,7 @@ const bid = (socket, data) => {
 
 const next = (io, data) => {
   const auction = liveAuctions.get(data.room);
-  auction.next(squads);
+  auction.next(squads, liveAuctions, data.room);
 };
 
 const checkUser = (socket, user) => {

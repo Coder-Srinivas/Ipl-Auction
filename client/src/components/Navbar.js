@@ -21,7 +21,7 @@ const Navbar = () => {
   };
   return (
     <header className="nav-container">
-      <img className="nav-container-logo" src="logo.png" alt="Logo"></img>
+      <img className="nav-container-logo" src="/Images/logo.png" alt="Logo"></img>
       <nav
         className={
           barState
@@ -37,6 +37,9 @@ const Navbar = () => {
         </Link>
         <Link to="/auction" className="nav-container-main-content">
           Auction
+        </Link>
+        <Link to="/auctions/played" className="nav-container-main-content">
+          Previous
         </Link>
       </nav>
 
