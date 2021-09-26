@@ -5,13 +5,8 @@ const url =
     : process.env.PROD_MONGO_URL;
 const dbName = "auction";
 
-mongoose.set("useNewUrlParser", true);
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
-
 const db = mongoose
   .connect(url + dbName, {
-    useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {

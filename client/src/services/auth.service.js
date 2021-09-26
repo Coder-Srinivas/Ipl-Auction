@@ -1,12 +1,8 @@
 import axiosInstance from "../utilities/axiosInstance";
-const url =
-  process.env.NODE_ENV === "production"
-    ? "https://ipl-mega-auction.herokuapp.com/"
-    : "http://localhost:8000/";
 
 const login = async (email, password) => {
   return await axiosInstance
-    .post(url + "login", {
+    .post("login", {
       email,
       password,
     })
@@ -20,7 +16,7 @@ const login = async (email, password) => {
 
 const register = async (username, email, password) => {
   return await axiosInstance
-    .post(url + "signup", {
+    .post("signup", {
       email,
       password,
       username,
@@ -34,7 +30,7 @@ const register = async (username, email, password) => {
 };
 
 const logout = async () => {
-  return await axiosInstance.get(url + "logout").then((response) => {
+  return await axiosInstance.get("logout").then((response) => {
     return response.data;
   });
 };
