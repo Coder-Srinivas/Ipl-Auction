@@ -37,20 +37,19 @@
 
 <h2 id='inspiration'> My Inspiration 💡</h2>
 
-<div align="center">![YoureMyInspirationBrynnElliottGIF](https://user-images.githubusercontent.com/59244289/136423443-7dd54f9f-e9b7-45a4-a700-037558abd1a1.gif)</div>
+![YoureMyInspirationBrynnElliottGIF](https://user-images.githubusercontent.com/59244289/136423443-7dd54f9f-e9b7-45a4-a700-037558abd1a1.gif)
 
 It began back during my childhood days, the urge to play the IPL Auction depicting real players. I used to team up with my friends and play the auction manually with a pen and paper, with a organizer to keep track. Over the last 1 year, I wondered, can I do anything to make my experience better? So I came up with the idea of building a IPL auction app, based on the MERN stack.
 
 <h2 id='features'> What it does ✨</h2>
 
-<div align="center">![AndThatsWhatItDoesDigibyteGIF](https://user-images.githubusercontent.com/59244289/136423729-777b2bb9-3d7c-4ec3-a9e3-742167451853.gif)</div>
+![AndThatsWhatItDoesDigibyteGIF](https://user-images.githubusercontent.com/59244289/136423729-777b2bb9-3d7c-4ec3-a9e3-742167451853.gif)
 
 You can team up with your friends and dive into the fun world of auctioning IPL players. The application is capable of auctioning players belonging to various IPL Teams. The bid timer is reset with each bid and the time slot to buy a player is 10 seconds so be quick. It's a fun application to experience the the real IPL Auction with friends. Simply create an account, gather your friends and jump staright into the auction.
 
 <h2 id='build'> How I built it 🐺</h2>
 
-<div align="center">![HowItsMadeCuriousGIF](https://user-images.githubusercontent.com/59244289/136423987-f44902a6-a93b-423d-af6d-1d2c525bdfa4.gif)
-</div>
+![HowItsMadeCuriousGIF](https://user-images.githubusercontent.com/59244289/136423987-f44902a6-a93b-423d-af6d-1d2c525bdfa4.gif)
 
 - The news is fetched from the RSS feed of Times of India.
 - Puppeteer is used to scrape data from the IPLT20 Website.
@@ -75,9 +74,8 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
 
 <h2 id='play'>How to play 🎭</h2>
 
-<div align="center">
  ![TypicalDayPaningningTheRealPaningningGIF](https://user-images.githubusercontent.com/59244289/136424082-80c3bbc0-5575-472b-a4e7-97942c4b10b5.gif)
-</div>
+
 - Login/Signup using your email address and password
 - Create a new auction
 - Share the generated code with your friends
