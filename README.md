@@ -5,20 +5,45 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-## Tech Stack 👨‍💻
+<h2> Overview </h2>
+ <ul>
+  <li>
+    <a href ='#tech-stack'> Tech Stack 👨‍💻</a>
+  </li>
+  <li>
+   <a href ='#inspiration'> My Inspiration 💡</a>
+  </li>
+  <li>
+   <a href ='#features'> What it does ✨</a>
+  </li>
+  <li>
+     <a href ='#build'> How I built it 🐺</a>
+  </li>
+  <li> 
+   <a href='#screenshots'>Screenshots 🖼️</a>
+   </li>
+   <li> 
+   <a href='#play'>How to play 🎭</a>
+   </li>
+    <li> 
+   <a href='#structure'>Project Structure 💪</a>
+   </li>
+ </ul>
+ 
+<h2 id='tech-stack'> Tech Stack 👨‍💻</h2>
 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 
-## Inspiration
+<h2 id='inspiration'> My Inspiration 💡</h2>
 
 It began back during my childhood days, the urge to play the IPL Auction depicting real players. I used to team up with my friends and play the auction manually with a pen and paper, with a organizer to keep track. Over the last 1 year, I wondered, can I do anything to make my experience better? So I came up with the idea of building a IPL auction app, based on the MERN stack.
 
-## What it does?
+<h2 id='features'> What it does ✨</h2>
 
 You can team up with your friends and dive into the fun world of auctioning IPL players. The application is capable of auctioning players belonging to various IPL Teams. The bid timer is reset with each bid and the time slot to buy a player is 10 seconds so be quick. It's a fun application to experience the the real IPL Auction with friends. Simply create an account, gather your friends and jump staright into the auction.
 
-## How I built it?
+<h2 id='build'> How I built it 🐺</h2>
 
 - The news is fetched from the RSS feed of Times of India.
 - Puppeteer is used to scrape data from the IPLT20 Website.
@@ -29,7 +54,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
 - User class stores the information of the user and the players purchased by him/her.
 - node-schedule is used to schedule the scraping process.
 
-## Screenshots
+<h2 id='screenshots'>Screenshots 🖼️</h2>
 
 <div align="center">
   <img width="45%" src="https://github.com/Coder-Srinivas/Ipl-Auction/blob/master/client/public/Images/Screenshot-1.png">
@@ -41,7 +66,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
   <img width="45%" src="https://github.com/Coder-Srinivas/Ipl-Auction/blob/master/client/public/Images/Screenshot-7.png">
 </div>
 
-## How to Play?
+<h2 id='play'>How to play 🎭</h2>
 
 - Login/Signup using your email address and password
 - Create a new auction
@@ -49,7 +74,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
 - Bid on your favourite players
 - Most important part is to enjoy
 
-## Project Structure
+<h2 id='structure'>Project Structure 💪</h2>
 
     .
     │   .gitignore
@@ -206,6 +231,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
     │
     └───utilities
             players.js...
+
 ## Steps to get the project running locally on your machine
 
 #### Setting Up Environment Variables
