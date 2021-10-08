@@ -51,14 +51,17 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
 
 ![HowItsMadeCuriousGIF](https://user-images.githubusercontent.com/59244289/136423987-f44902a6-a93b-423d-af6d-1d2c525bdfa4.gif)
 
+- React is used on the client side.
+- Node.js is used on the server side.
 - The news is fetched from the RSS feed of Times of India.
 - Puppeteer is used to scrape data from the IPLT20 Website.
 - Socket.io is used to establish a full-duplex connection with the server and the client.
 - HTTP-only cookies are used to store the information of the user on the client side.
-- bcrypt is used to hash the passwords of the user
+- bcrypt is used to hash the passwords of the user.
 - An auction object is created upon the creation of a new auction which stores the information of current auction.
 - User class stores the information of the user and the players purchased by him/her.
 - node-schedule is used to schedule the scraping process.
+- Mongodb database is used to store the incomming data.
 
 <h2 id='screenshots'>Screenshots 🖼️</h2>
 
