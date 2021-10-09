@@ -5,6 +5,10 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
+<p align="center"> 
+  <img src="https://socialify.git.ci/Coder-Srinivas/Ipl-Auction/image?description=1&font=Raleway&forks=1&language=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark" alt="Logo" width="75%">
+</p>
+
 <h2> Overview </h2>
  <ul>
   <li>
