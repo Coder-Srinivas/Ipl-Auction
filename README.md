@@ -9,6 +9,8 @@
   <img src="https://socialify.git.ci/Coder-Srinivas/Ipl-Auction/image?description=1&font=Raleway&forks=1&language=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark" alt="Logo" width="75%">
 </p>
 
+## Hit ⭐ if you like this project
+
 <h2> Overview </h2>
  <ul>
   <li>
