@@ -36,9 +36,6 @@ const Navbar = () => {
         <Link to="/" className="nav-container-main-content">
           Home
         </Link>
-        <Link to="/about" className="nav-container-main-content">
-          About
-        </Link>
         <Link to="/auction" className="nav-container-main-content">
           Auction
         </Link>
