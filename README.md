@@ -81,7 +81,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
 
 <h2 id='play'>How to play 🎭</h2>
 
- ![TypicalDayPaningningTheRealPaningningGIF](https://user-images.githubusercontent.com/59244289/136424082-80c3bbc0-5575-472b-a4e7-97942c4b10b5.gif)
+![TypicalDayPaningningTheRealPaningningGIF](https://user-images.githubusercontent.com/59244289/136424082-80c3bbc0-5575-472b-a4e7-97942c4b10b5.gif)
 
 - Login/Signup using your email address and password
 - Create a new auction
@@ -115,7 +115,7 @@ You can team up with your friends and dive into the fun world of auctioning IPL 
     │   │
     │   ├───public
     │   │   │   index.html
-    │   │   │   
+    │   │   │
     │   │   └───Images
     │   │           arrow.svg
     │   │           error.svg
